@@ -1,0 +1,1 @@
+Sitemap: https://kamataak.github.io/bspam-web/sitemap.xml
