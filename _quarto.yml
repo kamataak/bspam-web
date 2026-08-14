@@ -1,0 +1,67 @@
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "bspam Website"
+  description: "bspam Website"
+  search: true
+  
+# Top navigation bar
+  navbar:
+    background: dark
+    left:
+      - text: "About bspam"
+        href: index.qmd
+      - text: "Tutorial"
+        href: tutorial-intro.qmd
+      - text: "Resources"
+        href: resources.qmd
+
+# Multiple Sidebars  
+  sidebar:
+  # Sidebar 1
+  - id: about
+    style: docked
+    contents:
+      - text: "What is bspam?"
+        href: index.qmd
+      - text: "Getting Started"
+        href: getting-started.qmd
+      - text: "Data Requirements"
+        href: data-preparation.qmd
+      - text: "More about bspam"
+        href: "more_about.qmd"
+
+  # Sidebar 2
+  - id: tutorial
+    style: docked
+    contents: 
+      - text: "Tutorial Home"
+        href: tutorial-intro.qmd
+      - text: "Data Exploration"
+        href: T01_Data_Exploration.qmd
+      - text: "Task Calibration"
+        href: T02_Task_Calibration.qmd
+      - text: "Scoring 1"
+        href: T03_Scoring_1.qmd
+
+  # Sidebar 3
+  - id: resourses
+    style: docked
+    contents:
+      - text: "Resources Home"
+        href: resources.qmd
+       
+format:
+  html:
+    theme:
+      - cosmo
+      - brand
+    css: styles.css
+    toc: true
+    toc-location: right
+    toc-title: "On this page"
+
+editor: visual
+

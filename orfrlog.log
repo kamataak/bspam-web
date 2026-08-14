@@ -1,0 +1,40 @@
+INFO [2026-08-07 14:42:28] Begin mcem process
+INFO [2026-08-07 14:42:50] End mcem process
+INFO [2026-08-07 14:44:40] Begin mcem process
+INFO [2026-08-07 14:45:02] End mcem process
+INFO [2026-08-07 14:52:57] Begin mcem process
+INFO [2026-08-07 14:53:19] End mcem process
+INFO [2026-08-07 15:35:38] Begin mcem process
+INFO [2026-08-07 15:36:00] End mcem process
+INFO [2026-08-07 15:36:00] There is no perfect accurate case.
+INFO [2026-08-07 15:36:00] There is no zero accurate case.
+INFO [2026-08-07 15:36:00] Begin scoring process
+INFO [2026-08-07 15:36:00] Output map estimating score
+INFO [2026-08-07 15:36:02] End scoring process
+INFO [2026-08-07 15:36:03] There is no perfect accurate case.
+INFO [2026-08-07 15:36:03] There is no zero accurate case.
+INFO [2026-08-07 15:36:03] Begin scoring process
+INFO [2026-08-07 15:36:03] Output eap estimating score
+INFO [2026-08-07 15:36:04] End scoring process
+INFO [2026-08-07 15:43:15] Begin mcem process
+INFO [2026-08-07 15:43:37] End mcem process
+INFO [2026-08-07 15:43:50] There is no perfect accurate case.
+INFO [2026-08-07 15:43:50] There is no zero accurate case.
+INFO [2026-08-07 15:43:50] Begin scoring process
+INFO [2026-08-07 15:43:50] Output map estimating score
+INFO [2026-08-07 15:43:53] End scoring process
+INFO [2026-08-07 15:47:59] There is no perfect accurate case.
+INFO [2026-08-07 15:47:59] There is no zero accurate case.
+INFO [2026-08-07 15:47:59] Begin scoring process
+INFO [2026-08-07 15:47:59] Output map estimating score
+INFO [2026-08-07 15:48:01] End scoring process
+INFO [2026-08-07 15:48:01] There is no perfect accurate case.
+INFO [2026-08-07 15:48:01] There is no zero accurate case.
+INFO [2026-08-07 15:48:01] Begin scoring process
+INFO [2026-08-07 15:48:01] Output eap estimating score
+INFO [2026-08-07 15:48:03] End scoring process
+INFO [2026-08-07 15:50:06] There is no perfect accurate case.
+INFO [2026-08-07 15:50:06] There is no zero accurate case.
+INFO [2026-08-07 15:50:06] Begin scoring process
+INFO [2026-08-07 15:50:06] Output eap estimating score
+INFO [2026-08-07 15:50:07] End scoring process

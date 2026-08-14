@@ -1,0 +1,11 @@
+---
+title: "What is bspam?"
+---
+
+`bspam` is an R package that contains functions to fit the speed-accuracy psychometric model for repeatedly measured count outcome data (Potgieter, Kamata & Kara, 2017; Kara, Kamata, Potgieter & Nese, 2020; Potgider, Kamata, Kara, & Qiao, 2025), which is an extension of van der Linden (2007). In the `bspam` model, the accuracy and speed are modeled by a binomial count and a log-normal latent variable models, respectively. It also estimates speed and accuracy latent factor scores as described in Potgieter, Qiao, Kamata, and Kara (2024). For example, the use of this modeling technique allows model-based calibration and scoring for oral reading fluency (ORF) assessment data, estimating model-based WCPM scores.
+
+`bspam` R package is maintained at:\
+<https://github.com/kamataak/bspam>
+
+`bspam` is also available as a Shiny App with limited features at:\
+<https://shinyviz.smu.edu/shiny/public/bspam-main/>

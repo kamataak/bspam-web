@@ -1,0 +1,21 @@
+---
+title: "Data Requirements"
+---
+
+### **Data Preparation**
+
+It is required that the data are prepared as a long-format data, where each row is data for a unique case, namely, a specific task from a specific person in a specific testing occasion. In the context of ORF assessment, each row is data for a specific passage from a specific student in a specific testing occasion. A data file can be prepared in any file format that is readable into R.
+
+For example, a CSV formatted data can be read into R by using the `read.csv()` function that is part of the base packages. Also, data files in some statistical software formats can be read in to R with functions in packages, such as the `haven` package. For example, `read_spss()` function can be used to read in an SPSS formatted data file into R.
+
+The data set should minimally contain the following 7 variables: (1) individual ID, (2) group ID, (3) testing occasion ID, (4) task ID, (5) the maximum number of attempts in the task, (6) the number of successes in the task, and (7) the time took to complete the task. Note if the data are coming from only one testing occasion and one group, the variables (2) group ID, and (3) testing occasion ID should contain an arbitrary constant value, such as all 1’s.
+
+Variable names and the order of the variables can be flexible in the data frame. When running functions in this package, variable names for required variables need to be specified, as shown in examples below.
+
+Then, the data need to be read into R as a data frame.
+
+### **Example Data Set in `bspam` R Package**
+
+The `bspam` R package comes with several example data sets in the ORF assessment context. To demonstrate some basic usage of key functions in the package, a sample ORF assessment data set is used here. In the context of an ORF assessment, a task is a passage given to the student to read aloud, and an attempt is student’s reading on a word in the passage, which is scored correct (i.e., success) or not. Accordingly, the number of successes in the task is the number of words correctly read in the passage.
+
+The data set `passage2` is a passage-level student data and consisted of reading accuracy and time data for 12 passages from 85 students. Although the 85 students were assigned to all 12 passages, the number of passages read by the 85 students varied from 2 to 12 passages. The number of students per passage were between 59 to 79. This is a small subset of the data collected by Nese and Kamata (2014-2018).

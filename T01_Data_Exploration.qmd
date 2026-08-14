@@ -1,0 +1,73 @@
+---
+title: "Data Exploration"
+---
+
+## Overview
+
+This document presents the data exploration of the example data set `passage2` available in the `bspam` package.
+
+## Load Packages
+
+First, we load required packages, including the `bspam` and `tidyverse` packages. We also load the example data set `passage2`.
+
+```{r eval=T, echo=T, message=F, warning=F}
+library(tidyverse)
+library(bspam)
+data("passage2")
+```
+
+## Data Exploration
+
+The data set `passage2` is a passage-level student data on ORF assessment and consisted of reading accuracy and time data for 12 passages from 85 students.Although the 85 students were assigned to all 12 passages, the number of passages read by the 85 students varied from 2 to 12 passages. The number of students per passage were between 59 to 79. This is a small subset of the data collected by Nese and Kamata (2014-2018).
+
+The seven variables in the data set includes:\
+
+- `id.student`: individual ID.
+
+- `occasion`: timing of the assessment.
+
+- `grade`: grade level of the student.
+
+- `id.passage`: passage ID.
+
+- `numwords.pass`: the number of words in the passage.
+
+- `wrc`: the number of correctly read words.
+
+- `sec`: the time took to read the passage in seconds.
+
+Some descriptive statistics are provided below. First, data were aggregated for each of the 12 passages as follows.
+
+```{r eval=T}
+passage2 %>% 
+  group_by(id.passage) %>% 
+  mutate(rate.wrc = wrc/numwords.pass,
+         sec.per10 = sec/numwords.pass*10) %>% 
+  summarise(n.students = n(),
+            numwords.pass = unique(numwords.pass),
+            mean.wrc = mean(wrc),
+            mean.sec = mean(sec),
+            mean.rate.wrc = mean(rate.wrc),
+            mean.sec.per10 = mean(sec.per10)) %>% 
+  ungroup() %>% 
+  knitr::kable(digits = 2) %>% 
+  kableExtra::scroll_box(width = "100%", height = "400px")
+```
+
+Here, it is noted that some passages are more difficult than other passages in accuracy and speed. The variable `mean.rate.wrc` was the mean of the proportion of correctly read words for each passage. In this data, Passages 22078 and 32010 had the highest `mean.rate.wrc`, indicating the easiest in accuracy, while Passages 33003 and 42055 had the lowest `mean.rate.wrc`, indicating the hardest in accuracy. On the other hand, the variable `mean.sec.per10` was the mean of the time to read 10 words for each passage. Passages 23019 and 33037 were among the easiest in speed, while Passage 32016 was most difficult in speed.
+
+Next, data were aggregated for each of the 85 students as follows.
+
+```{r eval=T}
+passage2 %>% 
+  group_by(id.student) %>% 
+  summarise(n.passages = n(),
+            tot.wrc = sum(wrc),
+            tot.sec = sum(sec),
+            obs.wcpm = tot.wrc/tot.sec*60) %>% 
+  ungroup() %>% 
+  knitr::kable(digits = 2) %>% 
+  kableExtra::scroll_box(width = "100%", height = "400px")
+```
+
+Here, `n.passages` is the number of passages the student read. The last column `obs.wcpm` is the observed WCPM scores, which is derived by the total number of words correctly read `tot.wrc` divided by the total time to read the passages `tot.sec`, then multiplied by 60.

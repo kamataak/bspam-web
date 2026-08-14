@@ -1,0 +1,82 @@
+---
+title: "Task Calibration for Task-Level Data"
+---
+
+## Overview
+
+As an example of task calibration, this document demonstrates the passage parameter calibration using `passage2` example ORF data. Note that a passage is a task in the ORF context.
+
+## Load Packages
+
+First, we load required packages `tidyverse` and `bspam`, and the example data set `passage2`.
+
+```{r message=F}
+library(tidyverse)
+library(bspam)
+data("passage2")
+```
+
+## Passage Calibration
+
+We will use the `fit.model()` function with the default estimation method, which is the Monte Carlo EM algorithm described in Potgieter et al. (2025).
+
+The `fit.model()` function requires several arguments. The description of the arguments are summarized in the table below.
+
+| Arguments | Required | Description |
+|------------------|------------------|-------------------------------------|
+| `data` | Yes | The name of the data-frame object |
+| `person.id` | Yes | Quoted variable name in `data` for the unique person identifier. In the ORF context, typically student ID. |
+| `task.id` | Yes | Quoted variable name in `data` for the task identifier. In ORF context, passage ID. |
+| `max.count` | Yes | Quoted variable name in `data` for the number of attempts in the task. In ORF context, the number of attempted words in the passage. |
+| `obs.count` | Yes | Quoted variable name in `data` for the number of successful attempts in the task. In ORF context, the number of correctly read words. |
+| `time` | Yes | Quoted variable name in `data` for the time in seconds to complete the task. In ORF context, time to complete reading the passage. |
+| `occasion` | Optional | Quoted variable name in `data` for indicating different measurement occasions. |
+| `group` | Optional | The variable name in the data for indicating different groups of individuals, such as grade levels. |
+| `k.in` | Optional | The number of EM imputations. The default is `k.in = 5` . |
+| `reps.in` | Optional | The number of Monte-Carlo iterations. The default is `reps.in = 2` . |
+| `est` | Optional | Quoted string, indicating the choice of the estimator. It has to be `"mcem"` or `"bayes"`. Default is `"mcem"` . |
+| `se` | Optional | Quoted string, indicating the choice of the standard errors. It has to be one of `"none"` , `"analytic"` , or `"bootstrap"` . Default is `"none"` . |
+| `verbose` | Optional | If TRUE, the summary will be output. Default is FALSE. |
+
+: Table 2-1. Key Arguments for the fit.model( ) Function for Fitting Task-Level model
+
+With minimally required arguments, the specification for the `fit.mode()` function to fit the `passage2` data look like as follows. Note that the only optional argument included is `reps.in = 50` where the number of Monte-Carlo iterations is set to 50, rather than 2 by default.
+
+```{r calibration1, message=F, cache=T}
+MCEM_run1 <- fit.model(data = passage2,
+                       person.id = "id.student",
+                       task.id = "id.passage",
+                       max.counts = "numwords.pass",
+                       obs.counts = "wrc",
+                       time = "sec",
+                       reps.in = 50)
+```
+
+```{r}
+MCEM_run1
+```
+
+## Interpretations
+
+Under the *\$task.param*, estimated passage parameters are outputted. Accuracy parameters are *a* and *b*, where *a* is the discrimination parameter and *b* is the difficulty parameter, similar to the interpretations of 2-parameter item response theory (IRT) model parameters. Thus, a higher *b* indicates easier passage to read more accurately, and a higher *a* indicates a passage with higher association the probability of reading words correctly and the latent trait of accuracy. On the other hand, *alpha* and *beta* are time-intensity parameters (or time-difficulty) of passages. A higher *beta* indicates a passage which takes more time, given the same latent speed ability. It is in the scale of the logarithm of seconds to read per 10 words.
+
+Based on the result, Passage 32010 had the lowest `b`, indicating the easiest in accuracy, while Passages 33003 had the highest `b`, indicating the hardest in accuracy. These are consistent with the descriptive statistics presented above. On the other hand, based on the estimated *beta*, Passage 23019 was among the easiest in time intensity, while Passage 32016 was most difficult in time intensity, again, consistent with the descriptive statistics above.
+
+## Note
+
+By default, the standard errors for the model parameters are not estimated. This will allow one to increase the number of Monte-Carlo iterations `reps.in` to improve the quality of the model parameter estimates, while minimizing the computation time. The number of `reps.in` should be 50 to 100 in realistic calibrations. Also note that `k.in` is the number of imputations for the MCEM algorithm, where the default is 5. Note that SE's for model parameters are not required for running the `scoring()` function to estimate latent factor scores and WCPM scores in the next step. If standard errors for model parameters are desired, an additional argument `se = "analytic"` or `se = "bootstrap"` needs to be added to the `fit.model()` function.
+
+## Bayesian Calibration
+
+Task/passage calibration can also be performed by providing `est = "bayes"` argument. This will implement a fully Bayesian approach through Gibbs sampling by *JAGS* or Hamiltonian Monte Carlo by *Stan*. Currently, `bspam` uses *Stan* with complete data, that is, if all individuals have data on all tasks. Otherwise, `bspam` uses JAGS because it provides faster computations with missing observations. Note that `bspam` runs *JAGS* in its auto mode, which does not require the user to supply any specifications typically required for the Bayesian estimation, including the number of iterations and monitoring convergence. The standard deviations of the posterior distributions are reported in lieu of the standard errors. A specification for the `fit.model( )` function can look like as follows.
+
+```{r eval=F}
+Bayes_run <- fit.model(data = passage2,
+                       person.id = "id.student",
+                       task.id = "id.passage",
+                       max.counts = "numwords.pass",
+                       obs.counts = "wrc",
+                       time = "sec",
+                       est = "bayes",
+                       verbose=TRUE)
+```
