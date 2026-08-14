@@ -3,7 +3,7 @@ project:
   output-dir: _site
 
 website:
-  title: "bspam Website"
+  title: "bspam Web"
   description: "bspam Website"
   search: true
   
