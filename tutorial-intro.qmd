@@ -4,6 +4,8 @@ title: "Tutorial: Introduction"
 
 ## Key Functions in `bspam` Package
 
+The `bspam` package contains many functions, where users may not need to directly specify in their code to analyze their data. A list of functions that are essential or potentially useful to typical users are provided below.
+
 | Function | Purpose |
 |-----------------------|-------------------------------------------------|
 | `fit.model()` | Estimate task parameters by MCEM or Bayesian estimation |
@@ -13,3 +15,5 @@ title: "Tutorial: Introduction"
 | `plot.task()` | Visualize task parameter estimates |
 | `plot.person()` | Visualize person-level score estimates |
 | `plot.information()` | Visualize the information function for task parameters |
+
+Other functions in the package are mostly dependents for these key functions, such as `run.mcem()`, `run.scoring()`, `bayes()`, and `bayes.wcpm()`. Please refer to the package manual for details of other functions available in the package.

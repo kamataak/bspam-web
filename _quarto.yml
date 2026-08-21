@@ -37,7 +37,7 @@ website:
   - id: tutorial
     style: docked
     contents: 
-      - text: "Tutorial Home"
+      - text: "Tutorial: Introduction"
         href: tutorial-intro.qmd
       - text: "Data Exploration"
         href: T01_Data_Exploration.qmd
