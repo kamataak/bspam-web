@@ -114,10 +114,10 @@
     "href": "tutorial-intro.html",
     "title": "Tutorial: Introduction",
     "section": "",
-    "text": "Function\nPurpose\n\n\n\n\nfit.model()\nEstimate task parameters by MCEM or Bayesian estimation\n\n\nscoring()\nEstimate latent factor scores and model-based WCPM scores\n\n\nsummary()\nProduce summary output for calibration and scoring results\n\n\nget.cases()\nGenerate a list of person-by-occasion case identifiers\n\n\nplot.task()\nVisualize task parameter estimates\n\n\nplot.person()\nVisualize person-level score estimates\n\n\nplot.information()\nVisualize the information function for task parameters",
+    "text": "The bspam package contains many functions, where users may not need to directly specify in their code to analyze their data. A list of functions that are essential or potentially useful to typical users are provided below.\n\n\n\n\n\n\n\nFunction\nPurpose\n\n\n\n\nfit.model()\nEstimate task parameters by MCEM or Bayesian estimation\n\n\nscoring()\nEstimate latent factor scores and model-based WCPM scores\n\n\nsummary()\nProduce summary output for calibration and scoring results\n\n\nget.cases()\nGenerate a list of person-by-occasion case identifiers\n\n\nplot.task()\nVisualize task parameter estimates\n\n\nplot.person()\nVisualize person-level score estimates\n\n\nplot.information()\nVisualize the information function for task parameters\n\n\n\nOther functions in the package are mostly dependents for these key functions, such as run.mcem(), run.scoring(), bayes(), and bayes.wcpm(). Please refer to the package manual for details of other functions available in the package.",
     "crumbs": [
       "Tutorial",
-      "Tutorial Home"
+      "Tutorial: Introduction"
     ]
   },
   {
@@ -125,10 +125,10 @@
     "href": "tutorial-intro.html#key-functions-in-bspam-package",
     "title": "Tutorial: Introduction",
     "section": "",
-    "text": "Function\nPurpose\n\n\n\n\nfit.model()\nEstimate task parameters by MCEM or Bayesian estimation\n\n\nscoring()\nEstimate latent factor scores and model-based WCPM scores\n\n\nsummary()\nProduce summary output for calibration and scoring results\n\n\nget.cases()\nGenerate a list of person-by-occasion case identifiers\n\n\nplot.task()\nVisualize task parameter estimates\n\n\nplot.person()\nVisualize person-level score estimates\n\n\nplot.information()\nVisualize the information function for task parameters",
+    "text": "The bspam package contains many functions, where users may not need to directly specify in their code to analyze their data. A list of functions that are essential or potentially useful to typical users are provided below.\n\n\n\n\n\n\n\nFunction\nPurpose\n\n\n\n\nfit.model()\nEstimate task parameters by MCEM or Bayesian estimation\n\n\nscoring()\nEstimate latent factor scores and model-based WCPM scores\n\n\nsummary()\nProduce summary output for calibration and scoring results\n\n\nget.cases()\nGenerate a list of person-by-occasion case identifiers\n\n\nplot.task()\nVisualize task parameter estimates\n\n\nplot.person()\nVisualize person-level score estimates\n\n\nplot.information()\nVisualize the information function for task parameters\n\n\n\nOther functions in the package are mostly dependents for these key functions, such as run.mcem(), run.scoring(), bayes(), and bayes.wcpm(). Please refer to the package manual for details of other functions available in the package.",
     "crumbs": [
       "Tutorial",
-      "Tutorial Home"
+      "Tutorial: Introduction"
     ]
   },
   {
