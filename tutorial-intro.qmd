@@ -1,3 +1,15 @@
 ---
-title: "Tutorial Home"
+title: "Tutorial: Introduction"
 ---
+
+## Key Functions in `bspam` Package
+
+| Function | Purpose |
+|-----------------------|-------------------------------------------------|
+| `fit.model()` | Estimate task parameters by MCEM or Bayesian estimation |
+| `scoring()` | Estimate latent factor scores and model-based WCPM scores |
+| `summary()` | Produce summary output for calibration and scoring results |
+| `get.cases()` | Generate a list of person-by-occasion case identifiers |
+| `plot.task()` | Visualize task parameter estimates |
+| `plot.person()` | Visualize person-level score estimates |
+| `plot.information()` | Visualize the information function for task parameters |

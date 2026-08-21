@@ -18,4 +18,20 @@ Then, the data need to be read into R as a data frame.
 
 The `bspam` R package comes with several example data sets in the ORF assessment context. To demonstrate some basic usage of key functions in the package, a sample ORF assessment data set is used here. In the context of an ORF assessment, a task is a passage given to the student to read aloud, and an attempt is student’s reading on a word in the passage, which is scored correct (i.e., success) or not. Accordingly, the number of successes in the task is the number of words correctly read in the passage.
 
-The data set `passage2` is a passage-level student data and consisted of reading accuracy and time data for 12 passages from 85 students. Although the 85 students were assigned to all 12 passages, the number of passages read by the 85 students varied from 2 to 12 passages. The number of students per passage were between 59 to 79. This is a small subset of the data collected by Nese and Kamata (2014-2018).
+For example, the data set `passage2` is a passage-level student data and consisted of reading accuracy and time data for 12 passages from 85 students. Although the 85 students were assigned to all 12 passages, the number of passages read by the 85 students varied from 2 to 12 passages. The number of students per passage were between 59 to 79. This is a small subset of the data collected by Nese and Kamata (2014-2018).
+
+A list of all data sets in the `bspam` package is as follows.
+
+| Data Object Name      | Brief Description                               |
+|-----------------------|-------------------------------------------------|
+| `passage2`            | Passage-level ORF example data                  |
+| `sentence.level.data` | Sentence-level/testlet ORF example data         |
+| `sentence.cens.low`   | Sentence-level example data with low censoring  |
+| `sentence.cens.high`  | Sentence-level example data with high censoring |
+
+The package also includes two calibration output objects. These objects can be directly used in the `scoring()` function bypassing the callibration step. They are potentially useful for those who wish to manually produce a calibration output object for scoring, such as in a simulation study.
+
+| Output Object Name | Brief Description |
+|------------------------|------------------------------------------------|
+| `passage.calib.mcem` | Example MCEM calibration output object with `passage2` data |
+| `passage.calib.bayes` | Example Bayesian calibration output object with `passage2` data |
