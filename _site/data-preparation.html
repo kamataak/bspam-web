@@ -199,7 +199,61 @@ ul.task-list li input[type="checkbox"] {
 <section id="example-data-set-in-bspam-r-package" class="level3">
 <h3 class="anchored" data-anchor-id="example-data-set-in-bspam-r-package"><strong>Example Data Set in <code>bspam</code> R Package</strong></h3>
 <p>The <code>bspam</code> R package comes with several example data sets in the ORF assessment context. To demonstrate some basic usage of key functions in the package, a sample ORF assessment data set is used here. In the context of an ORF assessment, a task is a passage given to the student to read aloud, and an attempt is student’s reading on a word in the passage, which is scored correct (i.e., success) or not. Accordingly, the number of successes in the task is the number of words correctly read in the passage.</p>
-<p>The data set <code>passage2</code> is a passage-level student data and consisted of reading accuracy and time data for 12 passages from 85 students. Although the 85 students were assigned to all 12 passages, the number of passages read by the 85 students varied from 2 to 12 passages. The number of students per passage were between 59 to 79. This is a small subset of the data collected by Nese and Kamata (2014-2018).</p>
+<p>For example, the data set <code>passage2</code> is a passage-level student data and consisted of reading accuracy and time data for 12 passages from 85 students. Although the 85 students were assigned to all 12 passages, the number of passages read by the 85 students varied from 2 to 12 passages. The number of students per passage were between 59 to 79. This is a small subset of the data collected by Nese and Kamata (2014-2018).</p>
+<p>A list of all data sets in the <code>bspam</code> package is as follows.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 31%">
+<col style="width: 68%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Data Object Name</th>
+<th>Brief Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>passage2</code></td>
+<td>Passage-level ORF example data</td>
+</tr>
+<tr class="even">
+<td><code>sentence.level.data</code></td>
+<td>Sentence-level/testlet ORF example data</td>
+</tr>
+<tr class="odd">
+<td><code>sentence.cens.low</code></td>
+<td>Sentence-level example data with low censoring</td>
+</tr>
+<tr class="even">
+<td><code>sentence.cens.high</code></td>
+<td>Sentence-level example data with high censoring</td>
+</tr>
+</tbody>
+</table>
+<p>The package also includes two calibration output objects. These objects can be directly used in the <code>scoring()</code> function bypassing the callibration step. They are potentially useful for those who wish to manually produce a calibration output object for scoring, such as in a simulation study.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 66%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Output Object Name</th>
+<th>Brief Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>passage.calib.mcem</code></td>
+<td>Example MCEM calibration output object with <code>passage2</code> data</td>
+</tr>
+<tr class="even">
+<td><code>passage.calib.bayes</code></td>
+<td>Example Bayesian calibration output object with <code>passage2</code> data</td>
+</tr>
+</tbody>
+</table>
 
 
 </section>
