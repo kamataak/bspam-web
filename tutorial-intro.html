@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Tutorial Home – bspam Web</title>
+<title>Tutorial: Introduction – bspam Web</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -156,15 +156,21 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#key-functions-in-bspam-package" id="toc-key-functions-in-bspam-package" class="nav-link active" data-scroll-target="#key-functions-in-bspam-package">Key Functions in <code>bspam</code> Package</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Tutorial Home</h1>
+<h1 class="title">Tutorial: Introduction</h1>
 </div>
 
 
@@ -181,8 +187,53 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="key-functions-in-bspam-package" class="level2">
+<h2 class="anchored" data-anchor-id="key-functions-in-bspam-package">Key Functions in <code>bspam</code> Package</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 31%">
+<col style="width: 68%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>fit.model()</code></td>
+<td>Estimate task parameters by MCEM or Bayesian estimation</td>
+</tr>
+<tr class="even">
+<td><code>scoring()</code></td>
+<td>Estimate latent factor scores and model-based WCPM scores</td>
+</tr>
+<tr class="odd">
+<td><code>summary()</code></td>
+<td>Produce summary output for calibration and scoring results</td>
+</tr>
+<tr class="even">
+<td><code>get.cases()</code></td>
+<td>Generate a list of person-by-occasion case identifiers</td>
+</tr>
+<tr class="odd">
+<td><code>plot.task()</code></td>
+<td>Visualize task parameter estimates</td>
+</tr>
+<tr class="even">
+<td><code>plot.person()</code></td>
+<td>Visualize person-level score estimates</td>
+</tr>
+<tr class="odd">
+<td><code>plot.information()</code></td>
+<td>Visualize the information function for task parameters</td>
+</tr>
+</tbody>
+</table>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
