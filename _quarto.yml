@@ -43,18 +43,18 @@ website:
         href: T01_Data_Exploration.qmd
       - text: "Task Calibration"
         href: T02_Task_Calibration.qmd
-      - text: "Scoring 1"
+      - text: "Scoring 1: Basics"
         href: T03_Scoring_1.qmd
       - text: "Plotting Results"
         href: T04_Plotting.qmd
-      - text: "Scoring 2"
+      - text: "Scoring 2: Special Cases"
         href: T05_Scoring_2.qmd
-      - text: "Scoring 3"
+      - text: "Scoring 3: Alternative Two-Step Procesure"
         href: T06_Scoring_3.qmd
       - text: "Testlet Model"
         href: T07_Testlet.qmd
       - text: "Truncated Response Data"
-        href: T03_Truncated.qmd
+        href: T08_Truncated.qmd
 
   # Sidebar 3
   - id: resourses
