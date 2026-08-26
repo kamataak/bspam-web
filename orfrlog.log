@@ -132,3 +132,59 @@ INFO [2026-08-26 15:07:14] Begin scoring process
 INFO [2026-08-26 15:07:14] Output eap estimating score
 INFO [2026-08-26 15:07:17] End scoring process
 INFO [2026-08-26 15:07:17] Begin wcpm process with bayes setting
+INFO [2026-08-26 15:13:22] Begin mcem process
+INFO [2026-08-26 15:13:46] End mcem process
+INFO [2026-08-26 15:14:03] Begin mcem process
+INFO [2026-08-26 15:14:27] End mcem process
+INFO [2026-08-26 15:14:27] There is no perfect accurate case.
+INFO [2026-08-26 15:14:27] There is no zero accurate case.
+INFO [2026-08-26 15:14:27] Begin scoring process
+INFO [2026-08-26 15:14:27] Output map estimating score
+INFO [2026-08-26 15:14:30] End scoring process
+INFO [2026-08-26 15:14:47] Begin mcem process
+INFO [2026-08-26 15:15:10] End mcem process
+INFO [2026-08-26 15:15:10] There is no perfect accurate case.
+INFO [2026-08-26 15:15:10] There is no zero accurate case.
+INFO [2026-08-26 15:15:10] Begin scoring process
+INFO [2026-08-26 15:15:10] Output map estimating score
+INFO [2026-08-26 15:15:13] End scoring process
+INFO [2026-08-26 15:15:39] Begin mcem process
+INFO [2026-08-26 15:16:02] End mcem process
+INFO [2026-08-26 15:16:02] There is no perfect accurate case.
+INFO [2026-08-26 15:16:02] There is no zero accurate case.
+INFO [2026-08-26 15:16:02] Begin scoring process
+INFO [2026-08-26 15:16:02] Output eap estimating score
+INFO [2026-08-26 15:16:05] End scoring process
+INFO [2026-08-26 15:16:05] There is no perfect accurate case.
+INFO [2026-08-26 15:16:05] There is no zero accurate case.
+INFO [2026-08-26 15:16:05] Begin scoring process
+INFO [2026-08-26 15:16:05] Output eap estimating score
+INFO [2026-08-26 15:16:07] End scoring process
+INFO [2026-08-26 15:16:43] Begin mcem process
+INFO [2026-08-26 15:17:06] End mcem process
+INFO [2026-08-26 15:17:06] Begin preparing data process
+INFO [2026-08-26 15:17:06] End preparing data process
+INFO [2026-08-26 15:17:06] There is no perfect accurate case.
+INFO [2026-08-26 15:17:06] There is no zero accurate case.
+INFO [2026-08-26 15:17:06] Begin scoring process
+INFO [2026-08-26 15:17:06] Output map estimating score
+INFO [2026-08-26 15:17:09] End scoring process
+INFO [2026-08-26 15:17:09] There is no perfect accurate case.
+INFO [2026-08-26 15:17:09] There is no zero accurate case.
+INFO [2026-08-26 15:17:09] Begin scoring process
+INFO [2026-08-26 15:17:09] Output map estimating score
+INFO [2026-08-26 15:17:11] End scoring process
+INFO [2026-08-26 15:17:52] Begin testlet process
+INFO [2026-08-26 15:19:00] End testlet process
+INFO [2026-08-26 15:19:00] No cases!
+INFO [2026-08-26 15:19:00] Begin preparing data process
+INFO [2026-08-26 15:19:00] End preparing data process
+INFO [2026-08-26 15:19:00] Begin scoring sentence censoring process
+INFO [2026-08-26 15:19:34] End scoring sentence censoring process
+INFO [2026-08-26 15:25:38] Begin testlet process
+INFO [2026-08-26 15:26:16] End testlet process
+INFO [2026-08-26 15:26:16] No cases!
+INFO [2026-08-26 15:26:16] Begin preparing data process
+INFO [2026-08-26 15:26:16] End preparing data process
+INFO [2026-08-26 15:26:16] Begin scoring sentence censoring process
+INFO [2026-08-26 15:26:49] End scoring sentence censoring process
