@@ -188,3 +188,8 @@ INFO [2026-08-26 15:26:16] Begin preparing data process
 INFO [2026-08-26 15:26:16] End preparing data process
 INFO [2026-08-26 15:26:16] Begin scoring sentence censoring process
 INFO [2026-08-26 15:26:49] End scoring sentence censoring process
+INFO [2026-08-26 15:30:56] There is no perfect accurate case.
+INFO [2026-08-26 15:30:56] There is no zero accurate case.
+INFO [2026-08-26 15:30:56] Begin scoring process
+INFO [2026-08-26 15:30:56] Output eap estimating score
+INFO [2026-08-26 15:30:57] End scoring process
