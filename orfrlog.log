@@ -119,3 +119,16 @@ INFO [2026-08-26 13:33:04] Begin scoring process
 INFO [2026-08-26 13:33:05] Output eap estimating score
 INFO [2026-08-26 13:33:06] End scoring process
 INFO [2026-08-26 13:33:06] Begin wcpm process with bayes setting
+INFO [2026-08-26 15:06:48] Begin mcem process
+INFO [2026-08-26 15:07:11] End mcem process
+INFO [2026-08-26 15:07:11] There is no perfect accurate case.
+INFO [2026-08-26 15:07:11] There is no zero accurate case.
+INFO [2026-08-26 15:07:11] Begin scoring process
+INFO [2026-08-26 15:07:11] Output eap estimating score
+INFO [2026-08-26 15:07:14] End scoring process
+INFO [2026-08-26 15:07:14] There is no perfect accurate case.
+INFO [2026-08-26 15:07:14] There is no zero accurate case.
+INFO [2026-08-26 15:07:14] Begin scoring process
+INFO [2026-08-26 15:07:14] Output eap estimating score
+INFO [2026-08-26 15:07:17] End scoring process
+INFO [2026-08-26 15:07:17] Begin wcpm process with bayes setting

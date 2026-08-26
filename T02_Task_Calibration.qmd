@@ -23,7 +23,7 @@ We will use the `fit.model()` function with the default estimation method, which
 The `fit.model()` function requires several arguments. The description of the arguments are summarized in the table below.
 
 | Arguments | Required | Description |
-|----|----|----|
+|------------------------|------------------------|------------------------|
 | `data` | Yes | The name of the data-frame object |
 | `person.id` | Yes | Quoted variable name in `data` for the unique person identifier. In the ORF context, typically student ID. |
 | `task.id` | Yes | Quoted variable name in `data` for the task identifier. In ORF context, passage ID. |
@@ -70,7 +70,7 @@ By default, the standard errors for the model parameters are not estimated. This
 
 Task/passage calibration can also be performed by providing `est = "bayes"` argument. This will implement a fully Bayesian approach through Gibbs sampling by *JAGS* or Hamiltonian Monte Carlo by *Stan*. Currently, `bspam` uses *Stan* with complete data, that is, if all individuals have data on all tasks. Otherwise, `bspam` uses JAGS because it provides faster computations with missing observations. Note that `bspam` runs *JAGS* in its auto mode, which does not require the user to supply any specifications typically required for the Bayesian estimation, including the number of iterations and monitoring convergence. The standard deviations of the posterior distributions are reported in lieu of the standard errors. A specification for the `fit.model( )` function can look like as follows.
 
-```{r eval=F}
+```{r bayes.calib1, message=F, cache=T, eval=FALSE}
 Bayes_run <- fit.model(data = passage2,
                        person.id = "id.student",
                        task.id = "id.passage",

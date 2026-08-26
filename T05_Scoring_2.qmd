@@ -59,7 +59,7 @@ Also, we can specify a set of tasks (i.e., passages) to scale the WCPM scores. I
 
 The use of an external passage set is particularly important in the context of ORF assessment to make the estimated WCPM scores to be comparable between students who read different sets of passages, as well as within students for longitudinal data, where a student is likely to read different sets of passages.
 
-```{r}
+```{r scoring3, message=F, cache=T}
 WCPM_sample_ext1 <- scoring(calib.data = MCEM_run1, 
                             data = passage2,
                             person.id = "id.student",
@@ -77,9 +77,11 @@ WCPM_sample_ext1 <- scoring(calib.data = MCEM_run1,
 summary(WCPM_sample_ext1)
 ```
 
+## Scoring by Bayesian Approach
+
 A fully Bayesian approach can also be used as an estimator in the `scoring()` function. Note that if `est="bayes"` is specified, there is no need to use the `se=` argument. By default, the standard deviations of the posterior distributions are reported as the standard errors, along with 95% high density intervals, which is analogous to 95% confidence intervals. Here is an example of using the fully Bayesian approach for estimating WCPM scores from the same external passages used in the previous example.
 
-```{r}
+```{r scoring4, message=F, cache=T, eval=FALSE}
 WCPM_sample_ext1_bayes <- scoring(calib.data=MCEM_run1, 
                                   data = passage2,
                                   person.id = "id.student",
