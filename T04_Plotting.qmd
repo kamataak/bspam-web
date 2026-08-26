@@ -60,7 +60,7 @@ plot.person(WCPM_all, parameter = "wcpm", show.se = TRUE)
 
 Estimcated model-based WCPM scores can be plotted along with observed WCPM scores.
 
-```{r}
+```{r eval=FALSE}
 plot.wcpm(WCPM_all)
 ```
 
