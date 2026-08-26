@@ -12,6 +12,15 @@ The example data set `sentence.level.data` is a sentence-level student data and 
 
 \[Insert a bit more about the data?\]
 
+## Preparation
+
+Load required packages.
+
+```{r message=F}
+library(tidyverse)
+library(bspam)
+```
+
 ## Calibration
 
 We can use the `fit.model()` function in a similar way to the passage-level calibration. Two additional required arguments to include for testlet model calibration are `sub.task.ed =` and `testlet = TRUE`.
@@ -47,7 +56,7 @@ Testlet_run$task.param
 
 The scoring by the MAP can be done for this data set by:
 
-```{r}
+```{r testlet.score, message=F, cache=T}
 Testlet_scoring <- 
   scoring(calib.data = Testlet_run,
           data = sentence.level.data,

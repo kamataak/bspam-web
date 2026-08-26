@@ -8,6 +8,13 @@ The `bspam` package has some functions to plot results from calibration and scor
 
 ## Preparation
 
+Load required packages.
+
+```{r message=F}
+library(tidyverse)
+library(bspam)
+```
+
 Functions to plot results read an object that contains calibration results or scoring results.
 
 The scoring requires calibration results saved as an object.

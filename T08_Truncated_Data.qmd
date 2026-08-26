@@ -8,6 +8,13 @@ In some circumstances, a test may be designed as a speeded test, such that many 
 
 ## Preparation
 
+Load required packages.
+
+```{r message=F}
+library(tidyverse)
+library(bspam)
+```
+
 ```{r testlet.calb, message=F, cache=T}
 Testlet_run <- 
   fit.model(data        = sentence.level.data,
@@ -31,7 +38,7 @@ Prep
 
 For example, the package includes `sentence.cens.low` and `sentence.cens.high` for demonstrating sentence-level scoring with censored observations. A censored testlet scoring analysis can be run as follows:
 
-```{r}
+```{r censor.score, message=F, cache=T}
 Testlet_scoring_cens <- 
   scoring(calib.data = Testlet_run,
           data = sentence.cens.low,
