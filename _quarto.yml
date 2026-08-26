@@ -54,7 +54,7 @@ website:
       - text: "Testlet Model"
         href: T07_Testlet.qmd
       - text: "Truncated Response Data"
-        href: T08_Truncated.qmd
+        href: T08_Truncated_Data.qmd
 
   # Sidebar 3
   - id: resourses
