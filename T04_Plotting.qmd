@@ -68,6 +68,6 @@ plot.wcpm(WCPM_all)
 
 Information function can be plotted.
 
-```{r}
+```{r eval=FALSE}
 plot.information(MCEM_run)
 ```

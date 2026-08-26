@@ -57,3 +57,10 @@ INFO [2026-08-26 13:13:05] There is no zero accurate case.
 INFO [2026-08-26 13:13:05] Begin scoring process
 INFO [2026-08-26 13:13:05] Output map estimating score
 INFO [2026-08-26 13:13:07] End scoring process
+INFO [2026-08-26 13:22:02] Begin mcem process
+INFO [2026-08-26 13:22:25] End mcem process
+INFO [2026-08-26 13:22:25] There is no perfect accurate case.
+INFO [2026-08-26 13:22:25] There is no zero accurate case.
+INFO [2026-08-26 13:22:25] Begin scoring process
+INFO [2026-08-26 13:22:25] Output map estimating score
+INFO [2026-08-26 13:22:27] End scoring process
