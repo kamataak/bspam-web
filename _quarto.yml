@@ -45,6 +45,16 @@ website:
         href: T02_Task_Calibration.qmd
       - text: "Scoring 1"
         href: T03_Scoring_1.qmd
+      - text: "Plotting Results"
+        href: T04_Plotting.qmd
+      - text: "Scoring 2"
+        href: T05_Scoring_2.qmd
+      - text: "Scoring 3"
+        href: T06_Scoring_3.qmd
+      - text: "Testlet Model"
+        href: T07_Testlet.qmd
+      - text: "Truncated Response Data"
+        href: T03_Truncated.qmd
 
   # Sidebar 3
   - id: resourses

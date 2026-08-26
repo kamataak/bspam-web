@@ -1,0 +1,65 @@
+---
+title: "Testlet Model"
+---
+
+## Overview
+
+When ORF data are collected at the sentence level, sentences are nested within passages and may exhibit local dependence. In this case, a testlet-version of the model can be fitted and scored using `bspam`.
+
+## Example Data Set
+
+The example data set `sentence.level.data` is a sentence-level student data and consisted of reading accuracy and time data for 4 passages from 58 students. The 4 passages were consisted of 4 to 8 sentences, totaling 23 sentences. All 58 students read all 4 passages completely. This is a small subset of the data collected by Nese and Kamata (2014-2018).
+
+\[Insert a bit more about the data?\]
+
+## Calibration
+
+We can use the `fit.model()` function in a similar way to the passage-level calibration. Two additional required arguments to include for testlet model calibration are `sub.task.ed =` and `testlet = TRUE`.
+
+```{r testlet.calb, message=F, cache=T}
+Testlet_run <- 
+  fit.model(data        = sentence.level.data,
+            person.id   = "id.student",
+            task.id     = "id.passage",
+            sub.task.id = "id.sentence",
+            max.counts  = "numwords.sent",
+            obs.counts  = "wrc",
+            time        = "sec",
+            testlet     = TRUE,
+            verbose     = TRUE)
+```
+
+The estimated testlet parameter is reported as part of the hyper-parameters.
+
+```{r}
+Testlet_run$hyper.param
+```
+
+Task- and sentence-level parameters can be extracted by:
+
+```{r}
+Testlet_run$task.param
+```
+
+\[Insert about the results?\]
+
+## Scoring
+
+The scoring by the MAP can be done for this data set by:
+
+```{r}
+Testlet_scoring <- 
+  scoring(calib.data = Testlet_run,
+          data = sentence.level.data,
+          person.id = "id.student",
+          task.id = "id.passage",
+          sub.task.id = "id.sentence",
+          obs.counts = "wrc", 
+          max.counts = "numwords.sent",
+          time = "sec",
+          type = "orf",
+          testlet = TRUE,
+          censoring = TRUE)
+```
+
+\[Insert about the results?\]

@@ -1,0 +1,87 @@
+---
+title: "Scoring 3: Alternative Two-Step Procesure"
+---
+
+## Overview
+
+This document presents an alternative two-step procedure for scoring.
+
+## Preparation
+
+Load required packages.
+
+```{r message=F}
+library(tidyverse)
+library(bspam)
+```
+
+This alternative scoring procedure still requires calibration results saved as an object. If a calibration result object has not been saved, run a calibration process, such as:
+
+```{r calibration2, message=F, cache=T}
+MCEM_run1 <- fit.model(data = passage2,
+                       person.id = "id.student",
+                       task.id = "id.passage",
+                       max.counts = "numwords.pass",
+                       obs.counts = "wrc",
+                       time = "sec",
+                       reps.in = 50)
+```
+
+## Alternative Two-Step Procedure
+
+### Step 1
+
+Prepare the data using the `prep()` function. The function standardizes variable names, computes the natural logarithm of time, and creates analysis-ready long and wide data structures.
+
+For passage-level data, use the default setting (`sentence_level = FALSE`).\
+For sentence-level data, set `sentence_level = TRUE` and provide a `sub.task.id`.
+
+If `occasion` or `group` variables are not provided, `prep()` will create default constant values automatically.
+
+The automatically created values are occasion = 1 and group = 1, so users should leave these arguments unspecified rather than manually adding dummy columns when the corresponding information is not present in their data.
+
+The output from the `prep()` function is a list of two components. The `data.long` component is a data frame, which is a long format of student response data, and the `data.wide` is list that contains four components, including a wide format of the data, as well as other information such as the number of passages and the number of words for each passage.
+
+One benefit of this two-step approach is that we can use another utility function `get.cases()` to generate a list of unique cases with the output of the `prep()` function. This list can be useful when our interest is to estimate WCPM scores only for selected cases.
+
+```{r}
+data <- prep(data = passage2,
+             person.id = "id.student",
+             occasion = "occasion",
+             group = "grade",
+             task.id = "id.passage",
+             max.counts = "numwords.pass",
+             obs.counts = "wrc",
+             time = "sec")
+```
+
+Generate a list of unique cases
+
+```{r}
+all.cases <- get.cases(data$data.long)
+all.cases
+```
+
+### Step 2
+
+Run the `scoring()` function to estimate WCPM scores. Note that we pass the output object `MCEM_run` from the passage calibration phase, as well as the manipulated data `data.long` from Step 1. By default, WCPM scores will be estimated for all cases in the data. Additionally, there are several estimator options and standard error estimation options. In this example, maximum a priori (MAP) estimators for model parameter estimation and analytic approach to estimate standard errors are used.
+
+```{r}
+WCPM_all <- scoring(calib.data=MCEM_run1, 
+                    data = data$data.long,
+                    est = "map", 
+                    se = "analytic",
+                    type = "orf")
+summary(WCPM_all)
+```
+
+```{r}
+WCPM_sample_ext2 <- scoring(calib.data=MCEM_run, 
+                            data = data$data.long,
+                            cases = sample.cases, 
+                            external = c("32004","32010","32015","32016","33003","33037"),
+                            est = "map", 
+                            se = "analytic",
+                            type = "orf")
+summary(WCPM_sample_ext2)
+```

@@ -1,0 +1,66 @@
+---
+title: "Plotting Results"
+---
+
+## Overview
+
+The `bspam` package has some functions to plot results from calibration and scoring.
+
+## Preparation
+
+Functions to plot results read an object that contains calibration results or scoring results.
+
+The scoring requires calibration results saved as an object.
+
+```{r calibration2, message=F, cache=T}
+MCEM_run1 <- fit.model(data = passage2,
+                       person.id = "id.student",
+                       task.id = "id.passage",
+                       max.counts = "numwords.pass",
+                       obs.counts = "wrc",
+                       time = "sec",
+                       reps.in = 50)
+```
+
+```{r scoring1, message=F, cache=T}
+WCPM_all <- scoring(calib.data=MCEM_run1, 
+                    data = passage2,
+                    person.id = "id.student",
+                    occasion = "occasion",
+                    group = "grade",
+                    task.id = "id.passage",
+                    max.counts = "numwords.pass",
+                    obs.counts = "wrc",
+                    time = "sec",
+                    est = "map", 
+                    se = "analytic",
+                    type="orf")
+```
+
+## Plot Calibration Results
+
+```{r}
+plot.task(MCEM_run1, parameter = "a", sort = TRUE)
+```
+
+## Plot Scoring Results
+
+Estimated latent factor scores or model-based WCPM scores can be plotted along with their standard errors.
+
+```{r}
+plot.person(WCPM_all, parameter = "wcpm", show.se = TRUE)
+```
+
+Estimcated model-based WCPM scores can be plotted along with observed WCPM scores.
+
+```{r}
+plot.wcpm(WCPM_all)
+```
+
+## Plot Information Function
+
+Information function can be plotted.
+
+```{r}
+plot.information(MCEM_run)
+```

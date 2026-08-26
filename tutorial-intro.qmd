@@ -7,7 +7,7 @@ title: "Tutorial: Introduction"
 The `bspam` package contains many functions, where users may not need to directly specify in their code to analyze their data. A list of functions that are essential or potentially useful to typical users are provided below.
 
 | Function | Purpose |
-|-----------------------|-------------------------------------------------|
+|----|----|
 | `fit.model()` | Estimate task parameters by MCEM or Bayesian estimation |
 | `scoring()` | Estimate latent factor scores and model-based WCPM scores |
 | `summary()` | Produce summary output for calibration and scoring results |
