@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Task Calibration for Task-Level Data – bspam Web</title>
+<title>Scoring 3: Alternative Two-Step Procesure – bspam Web</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -150,7 +150,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./T02_Task_Calibration.html">Task Calibration</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./T06_Scoring_3.html">Scoring 3: Alternative Two-Step Procesure</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -176,7 +176,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./T02_Task_Calibration.html" class="sidebar-item-text sidebar-link active">
+  <a href="./T02_Task_Calibration.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Task Calibration</span></a>
   </div>
 </li>
@@ -200,7 +200,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./T06_Scoring_3.html" class="sidebar-item-text sidebar-link">
+  <a href="./T06_Scoring_3.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Scoring 3: Alternative Two-Step Procesure</span></a>
   </div>
 </li>
@@ -227,11 +227,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
-  <li><a href="#load-packages" id="toc-load-packages" class="nav-link" data-scroll-target="#load-packages">Load Packages</a></li>
-  <li><a href="#passage-calibration" id="toc-passage-calibration" class="nav-link" data-scroll-target="#passage-calibration">Passage Calibration</a></li>
-  <li><a href="#interpretations" id="toc-interpretations" class="nav-link" data-scroll-target="#interpretations">Interpretations</a></li>
-  <li><a href="#note" id="toc-note" class="nav-link" data-scroll-target="#note">Note</a></li>
-  <li><a href="#bayesian-calibration" id="toc-bayesian-calibration" class="nav-link" data-scroll-target="#bayesian-calibration">Bayesian Calibration</a></li>
+  <li><a href="#preparation" id="toc-preparation" class="nav-link" data-scroll-target="#preparation">Preparation</a></li>
+  <li><a href="#alternative-two-step-procedure" id="toc-alternative-two-step-procedure" class="nav-link" data-scroll-target="#alternative-two-step-procedure">Alternative Two-Step Procedure</a>
+  <ul class="collapse">
+  <li><a href="#step-1" id="toc-step-1" class="nav-link" data-scroll-target="#step-1">Step 1</a></li>
+  <li><a href="#step-2" id="toc-step-2" class="nav-link" data-scroll-target="#step-2">Step 2</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -240,7 +241,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Task Calibration for Task-Level Data</h1>
+<h1 class="title">Scoring 3: Alternative Two-Step Procesure</h1>
 </div>
 
 
@@ -259,104 +260,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>As an example of task calibration, this document demonstrates the passage parameter calibration using <code>passage2</code> example ORF data. Note that a passage is a task in the ORF context.</p>
+<p>This document presents an alternative two-step procedure for scoring.</p>
 </section>
-<section id="load-packages" class="level2">
-<h2 class="anchored" data-anchor-id="load-packages">Load Packages</h2>
-<p>First, we load required packages <code>tidyverse</code> and <code>bspam</code>, and the example data set <code>passage2</code>.</p>
+<section id="preparation" class="level2">
+<h2 class="anchored" data-anchor-id="preparation">Preparation</h2>
+<p>Load required packages.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(bspam)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"passage2"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(bspam)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</section>
-<section id="passage-calibration" class="level2">
-<h2 class="anchored" data-anchor-id="passage-calibration">Passage Calibration</h2>
-<p>We will use the <code>fit.model()</code> function with the default estimation method, which is the Monte Carlo EM algorithm described in Potgieter et al.&nbsp;(2025).</p>
-<p>The <code>fit.model()</code> function requires several arguments. The description of the arguments are summarized in the table below.</p>
-<table class="caption-top table">
-<caption>Table 2-1. Key Arguments for the fit.model( ) Function for Fitting Task-Level model</caption>
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Arguments</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>data</code></td>
-<td>Yes</td>
-<td>The name of the data-frame object</td>
-</tr>
-<tr class="even">
-<td><code>person.id</code></td>
-<td>Yes</td>
-<td>Quoted variable name in <code>data</code> for the unique person identifier. In the ORF context, typically student ID.</td>
-</tr>
-<tr class="odd">
-<td><code>task.id</code></td>
-<td>Yes</td>
-<td>Quoted variable name in <code>data</code> for the task identifier. In ORF context, passage ID.</td>
-</tr>
-<tr class="even">
-<td><code>max.count</code></td>
-<td>Yes</td>
-<td>Quoted variable name in <code>data</code> for the number of attempts in the task. In ORF context, the number of attempted words in the passage.</td>
-</tr>
-<tr class="odd">
-<td><code>obs.count</code></td>
-<td>Yes</td>
-<td>Quoted variable name in <code>data</code> for the number of successful attempts in the task. In ORF context, the number of correctly read words.</td>
-</tr>
-<tr class="even">
-<td><code>time</code></td>
-<td>Yes</td>
-<td>Quoted variable name in <code>data</code> for the time in seconds to complete the task. In ORF context, time to complete reading the passage.</td>
-</tr>
-<tr class="odd">
-<td><code>occasion</code></td>
-<td>Optional</td>
-<td>Quoted variable name in <code>data</code> for indicating different measurement occasions.</td>
-</tr>
-<tr class="even">
-<td><code>group</code></td>
-<td>Optional</td>
-<td>The variable name in the data for indicating different groups of individuals, such as grade levels.</td>
-</tr>
-<tr class="odd">
-<td><code>k.in</code></td>
-<td>Optional</td>
-<td>The number of EM imputations. The default is <code>k.in = 5</code> .</td>
-</tr>
-<tr class="even">
-<td><code>reps.in</code></td>
-<td>Optional</td>
-<td>The number of Monte-Carlo iterations. The default is <code>reps.in = 2</code> .</td>
-</tr>
-<tr class="odd">
-<td><code>est</code></td>
-<td>Optional</td>
-<td>Quoted string, indicating the choice of the estimator. It has to be <code>"mcem"</code> or <code>"bayes"</code>. Default is <code>"mcem"</code> .</td>
-</tr>
-<tr class="even">
-<td><code>se</code></td>
-<td>Optional</td>
-<td>Quoted string, indicating the choice of the standard errors. It has to be one of <code>"none"</code> , <code>"analytic"</code> , or <code>"bootstrap"</code> . Default is <code>"none"</code> .</td>
-</tr>
-<tr class="odd">
-<td><code>verbose</code></td>
-<td>Optional</td>
-<td>If TRUE, the summary will be output. Default is FALSE.</td>
-</tr>
-</tbody>
-</table>
-<p>With minimally required arguments, the specification for the <code>fit.mode()</code> function to fit the <code>passage2</code> data look like as follows. Note that the only optional argument included is <code>reps.in = 50</code> where the number of Monte-Carlo iterations is set to 50, rather than 2 by default.</p>
+<p>This alternative scoring procedure still requires calibration results saved as an object. If a calibration result object has not been saved, run a calibration process, such as:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>MCEM_run1 <span class="ot">&lt;-</span> <span class="fu">fit.model</span>(<span class="at">data =</span> passage2,</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                       <span class="at">person.id =</span> <span class="st">"id.student"</span>,</span>
@@ -366,61 +279,331 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>                       <span class="at">time =</span> <span class="st">"sec"</span>,</span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>                       <span class="at">reps.in =</span> <span class="dv">50</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+</section>
+<section id="alternative-two-step-procedure" class="level2">
+<h2 class="anchored" data-anchor-id="alternative-two-step-procedure">Alternative Two-Step Procedure</h2>
+<section id="step-1" class="level3">
+<h3 class="anchored" data-anchor-id="step-1">Step 1</h3>
+<p>Prepare the data using the <code>prep()</code> function. The function standardizes variable names, computes the natural logarithm of time, and creates analysis-ready long and wide data structures.</p>
+<p>For passage-level data, use the default setting (<code>sentence_level = FALSE</code>).<br>
+For sentence-level data, set <code>sentence_level = TRUE</code> and provide a <code>sub.task.id</code>.</p>
+<p>If <code>occasion</code> or <code>group</code> variables are not provided, <code>prep()</code> will create default constant values automatically.</p>
+<p>The automatically created values are occasion = 1 and group = 1, so users should leave these arguments unspecified rather than manually adding dummy columns when the corresponding information is not present in their data.</p>
+<p>The output from the <code>prep()</code> function is a list of two components. The <code>data.long</code> component is a data frame, which is a long format of student response data, and the <code>data.wide</code> is list that contains four components, including a wide format of the data, as well as other information such as the number of passages and the number of words for each passage.</p>
+<p>One benefit of this two-step approach is that we can use another utility function <code>get.cases()</code> to generate a list of unique cases with the output of the <code>prep()</code> function. This list can be useful when our interest is to estimate WCPM scores only for selected cases.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>MCEM_run1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">prep</span>(<span class="at">data =</span> passage2,</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">person.id =</span> <span class="st">"id.student"</span>,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">occasion =</span> <span class="st">"occasion"</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">group =</span> <span class="st">"grade"</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">task.id =</span> <span class="st">"id.passage"</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">max.counts =</span> <span class="st">"numwords.pass"</span>,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">obs.counts =</span> <span class="st">"wrc"</span>,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">time =</span> <span class="st">"sec"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Generate a list of unique cases</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>all.cases <span class="ot">&lt;-</span> <span class="fu">get.cases</span>(data<span class="sc">$</span>data.long)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>all.cases</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>$task.param
-# A tibble: 12 × 6
-       a     b alpha  beta task.id max.counts
-   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;      &lt;int&gt;
- 1 0.336 -1.43  6.14  1.75   22078         50
- 2 0.292 -1.38  8.09  1.74   23019         88
- 3 0.391 -1.38  7.25  1.80   32004         52
- 4 0.466 -1.54  8.17  1.82   32010         52
- 5 0.331 -1.37  5.20  1.74   32012         49
- 6 0.589 -1.45  6.92  1.83   32015         51
- 7 0.394 -1.44  2.54  1.99   32016         50
- 8 0.473 -1.09  7.55  1.86   33003         86
- 9 0.664 -1.45  7.31  1.75   33037         73
-10 0.594 -1.39  6.83  1.79   33040         76
-11 0.514 -1.31  5.96  1.80   42055         53
-12 0.480 -1.34  9.13  1.87   43030         89
-
-$hyper.param
-# A tibble: 1 × 2
-  vartau   rho
-   &lt;dbl&gt; &lt;dbl&gt;
-1 0.0999 0.447
-
-attr(,"class")
-[1] "fit.model"</code></pre>
+<pre><code>        cases
+1    954_fall
+13  1020_fall
+25   968_fall
+37  1037_fall
+49   964_fall
+57   157_fall
+69   158_fall
+81   177_fall
+93   181_fall
+103  203_fall
+115  289_fall
+127  305_fall
+139  309_fall
+150  389_fall
+162  396_fall
+174  409_fall
+185  412_fall
+192   58_fall
+197  592_fall
+200   60_fall
+203  629_fall
+208  633_fall
+210  645_fall
+222   66_fall
+231  698_fall
+243  700_fall
+254  705_fall
+266  709_fall
+278  715_fall
+290  992_fall
+299 1154_fall
+311 1164_fall
+320 1174_fall
+332 1184_fall
+344 1322_fall
+355 1332_fall
+365 1342_fall
+377 1492_fall
+388 1503_fall
+400 1513_fall
+412 1523_fall
+424 1565_fall
+436 1575_fall
+441  171_fall
+453 1737_fall
+463 1747_fall
+471 1757_fall
+473 1767_fall
+485 1777_fall
+496 1839_fall
+507 1849_fall
+514 1859_fall
+523 1890_fall
+525 1910_fall
+532 2033_fall
+543 2043_fall
+555 2089_fall
+565 2079_fall
+577 2125_fall
+585 2135_fall
+596 2145_fall
+608 2155_fall
+618 2185_fall
+627 2215_fall
+638 2235_fall
+645 2245_fall
+656 2255_fall
+666 2265_fall
+676 2275_fall
+688 2613_fall
+696 2648_fall
+708 2658_fall
+714 2699_fall
+725 2708_fall
+737 2718_fall
+749  271_fall
+761  281_fall
+773  291_fall
+784  335_fall
+791  369_fall
+797  830_fall
+808  838_fall
+819  848_fall
+830  909_fall
+841  919_fall</code></pre>
 </div>
 </div>
 </section>
-<section id="interpretations" class="level2">
-<h2 class="anchored" data-anchor-id="interpretations">Interpretations</h2>
-<p>Under the <em>$task.param</em>, estimated passage parameters are outputted. Accuracy parameters are <em>a</em> and <em>b</em>, where <em>a</em> is the discrimination parameter and <em>b</em> is the difficulty parameter, similar to the interpretations of 2-parameter item response theory (IRT) model parameters. Thus, a higher <em>b</em> indicates easier passage to read more accurately, and a higher <em>a</em> indicates a passage with higher association the probability of reading words correctly and the latent trait of accuracy. On the other hand, <em>alpha</em> and <em>beta</em> are time-intensity parameters (or time-difficulty) of passages. A higher <em>beta</em> indicates a passage which takes more time, given the same latent speed ability. It is in the scale of the logarithm of seconds to read per 10 words.</p>
-<p>Based on the result, Passage 32010 had the lowest <code>b</code>, indicating the easiest in accuracy, while Passages 33003 had the highest <code>b</code>, indicating the hardest in accuracy. These are consistent with the descriptive statistics presented above. On the other hand, based on the estimated <em>beta</em>, Passage 23019 was among the easiest in time intensity, while Passage 32016 was most difficult in time intensity, again, consistent with the descriptive statistics above.</p>
-</section>
-<section id="note" class="level2">
-<h2 class="anchored" data-anchor-id="note">Note</h2>
-<p>By default, the standard errors for the model parameters are not estimated. This will allow one to increase the number of Monte-Carlo iterations <code>reps.in</code> to improve the quality of the model parameter estimates, while minimizing the computation time. The number of <code>reps.in</code> should be 50 to 100 in realistic calibrations. Also note that <code>k.in</code> is the number of imputations for the MCEM algorithm, where the default is 5. Note that SE’s for model parameters are not required for running the <code>scoring()</code> function to estimate latent factor scores and WCPM scores in the next step. If standard errors for model parameters are desired, an additional argument <code>se = "analytic"</code> or <code>se = "bootstrap"</code> needs to be added to the <code>fit.model()</code> function.</p>
-</section>
-<section id="bayesian-calibration" class="level2">
-<h2 class="anchored" data-anchor-id="bayesian-calibration">Bayesian Calibration</h2>
-<p>Task/passage calibration can also be performed by providing <code>est = "bayes"</code> argument. This will implement a fully Bayesian approach through Gibbs sampling by <em>JAGS</em> or Hamiltonian Monte Carlo by <em>Stan</em>. Currently, <code>bspam</code> uses <em>Stan</em> with complete data, that is, if all individuals have data on all tasks. Otherwise, <code>bspam</code> uses JAGS because it provides faster computations with missing observations. Note that <code>bspam</code> runs <em>JAGS</em> in its auto mode, which does not require the user to supply any specifications typically required for the Bayesian estimation, including the number of iterations and monitoring convergence. The standard deviations of the posterior distributions are reported in lieu of the standard errors. A specification for the <code>fit.model( )</code> function can look like as follows.</p>
+<section id="step-2" class="level3">
+<h3 class="anchored" data-anchor-id="step-2">Step 2</h3>
+<p>Run the <code>scoring()</code> function to estimate WCPM scores. Note that we pass the output object <code>MCEM_run</code> from the passage calibration phase, as well as the manipulated data <code>data.long</code> from Step 1. By default, WCPM scores will be estimated for all cases in the data. Additionally, there are several estimator options and standard error estimation options. In this example, maximum a priori (MAP) estimators for model parameter estimation and analytic approach to estimate standard errors are used.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>Bayes_run <span class="ot">&lt;-</span> <span class="fu">fit.model</span>(<span class="at">data =</span> passage2,</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>                       <span class="at">person.id =</span> <span class="st">"id.student"</span>,</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                       <span class="at">task.id =</span> <span class="st">"id.passage"</span>,</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>                       <span class="at">max.counts =</span> <span class="st">"numwords.pass"</span>,</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>                       <span class="at">obs.counts =</span> <span class="st">"wrc"</span>,</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>                       <span class="at">time =</span> <span class="st">"sec"</span>,</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>                       <span class="at">est =</span> <span class="st">"bayes"</span>,</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>                       <span class="at">verbose=</span><span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>WCPM_all <span class="ot">&lt;-</span> <span class="fu">scoring</span>(<span class="at">calib.data=</span>MCEM_run1, </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">data =</span> data<span class="sc">$</span>data.long,</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">est =</span> <span class="st">"map"</span>, </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">se =</span> <span class="st">"analytic"</span>,</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">type =</span> <span class="st">"orf"</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(WCPM_all)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> person.id tau.map theta.map se.tau.map se.theta.map obs.counts.map secs.map
+       954   0.139     1.018      0.041        0.187        743.629  407.018
+      1020   0.042     1.271      0.041        0.205        749.256  448.428
+       968  -0.021     1.154      0.041        0.198        746.812  478.030
+      1037   0.105    -0.762      0.041        0.111        650.296  421.051
+       964  -0.908    -2.183      0.052        0.146        311.397  669.779
+       157   0.048     1.469      0.041        0.223        752.849  446.141
+       158   0.040     1.527      0.041        0.232        753.766  449.336
+       177   0.175     1.003      0.041        0.186        743.252  392.819
+       181  -0.181     0.300      0.042        0.152        626.432  481.323
+       203   0.267     1.652      0.041        0.242        755.604  358.085
+       289   0.150     1.146      0.041        0.197        746.637  402.579
+       305   0.246     1.340      0.041        0.212        750.575  365.725
+       309  -0.003     0.189      0.043        0.144        664.537  437.379
+       389   0.371     0.891      0.041        0.179        740.293  322.722
+       396   0.241     0.053      0.041        0.136        707.064  367.705
+       409   0.169    -1.429      0.043        0.107        525.561  349.322
+       412  -0.387    -1.218      0.053        0.139        366.175  413.322
+        58  -0.678     0.298      0.066        0.265        239.107  296.492
+       592  -0.729    -1.594      0.085        0.181        128.801  231.338
+        60  -0.415    -0.553      0.073        0.247        160.763  173.321
+       629  -0.152    -0.147      0.068        0.221        265.375  216.581
+       633  -0.539     0.100      0.095        0.299        115.029  119.728
+       645  -0.066     1.077      0.041        0.192        745.043  499.989
+        66  -0.314    -1.194      0.051        0.117        421.039  451.864
+       698  -0.174    -0.605      0.041        0.115        663.433  556.650
+       700   0.021     0.364      0.041        0.152        674.725  420.586
+       705  -0.356    -0.552      0.041        0.116        667.565  667.757
+       709   0.599     0.451      0.041        0.153        725.530  257.127
+       715   0.567     0.153      0.041        0.140        712.223  265.328
+       992  -0.583    -0.664      0.049        0.148        451.477  558.350
+      1154   0.087    -0.976      0.041        0.107        630.814  429.077
+      1164   0.075     0.406      0.046        0.179        520.365  303.955
+      1174  -0.235     0.189      0.041        0.141        714.001  591.825
+      1184  -0.087     0.014      0.041        0.134        704.979  510.256
+      1322  -0.095    -0.948      0.043        0.110        557.113  460.042
+      1332  -0.009     0.256      0.045        0.164        597.301  394.776
+      1342  -0.050    -0.532      0.041        0.116        669.107  491.934
+      1492   0.321     0.402      0.041        0.153        676.201  311.632
+      1503  -0.288     1.047      0.041        0.189        744.341  624.207
+      1513   0.259     1.481      0.041        0.227        753.044  361.102
+      1523   0.052     1.047      0.041        0.191        744.344  444.366
+      1565   0.261    -0.697      0.041        0.113        655.886  360.281
+      1575  -0.245    -1.921      0.064        0.139        213.189  260.213
+       171   0.307     0.140      0.041        0.139        711.560  344.329
+      1737  -0.096     0.479      0.044        0.162        629.033  437.731
+      1747   0.060     0.799      0.049        0.216        491.758  297.176
+      1757  -1.016    -2.209      0.102        0.273         68.033  166.033
+      1767   0.252     0.117      0.041        0.138        710.403  363.836
+      1777   0.075    -0.884      0.043        0.111        562.811  388.135
+      1839   0.168     1.160      0.041        0.203        698.332  363.077
+      1849  -0.114    -1.523      0.053        0.148        325.468  285.635
+      1859  -0.113    -0.903      0.050        0.126        478.258  390.448
+      1890   0.073    -2.363      0.098        0.225         85.875   88.460
+      1910   0.159    -1.721      0.055        0.168        303.787  203.194
+      2033   0.182     0.399      0.042        0.152        677.613  366.694
+      2043  -0.220     0.036      0.041        0.135        706.184  583.207
+      2089  -0.486    -1.004      0.045        0.126        504.853  598.738
+      2079   0.170     0.873      0.041        0.176        739.770  394.658
+      2125  -0.086    -0.462      0.055        0.145        401.971  301.032
+      2135  -0.081     0.033      0.043        0.138        625.083  453.820
+      2145  -0.154    -0.389      0.041        0.121        679.722  545.745
+      2155   0.161    -0.638      0.046        0.125        514.826  309.898
+      2185  -0.429    -1.499      0.048        0.123        427.709  523.481
+      2215  -0.040    -0.703      0.043        0.120        588.087  430.421
+      2235   0.302    -1.682      0.056        0.118        312.336  201.987
+      2245  -0.156    -1.244      0.042        0.113        547.299  493.904
+      2255  -0.157    -0.967      0.046        0.126        499.310  428.131
+      2265  -0.222    -0.707      0.045        0.123        543.515  480.965
+      2275   0.144     0.237      0.041        0.143        716.298  405.215
+      2613  -0.525    -0.444      0.051        0.145        404.096  454.328
+      2648   0.146     0.216      0.041        0.142        715.298  404.435
+      2658  -0.188    -0.383      0.060        0.163        315.891  252.537
+      2699  -0.191     0.017      0.043        0.145        630.488  500.647
+      2708   0.153     0.826      0.041        0.174        738.418  401.597
+      2718  -0.218     0.104      0.041        0.137        709.741  582.012
+       271   0.156     0.616      0.041        0.162        731.705  400.424
+       281   0.371     1.247      0.041        0.205        748.769  322.885
+       291   0.375    -0.865      0.042        0.119        579.568  290.622
+       335  -0.594    -1.034      0.059        0.148        310.998  417.540
+       369  -0.086    -1.784      0.059        0.138        251.851  241.962
+       830   0.283     0.206      0.043        0.149        666.656  328.816
+       838   0.241    -0.624      0.043        0.117        583.868  328.786
+       848   0.234    -0.459      0.043        0.128        604.650  327.329
+       909   0.346     0.616      0.043        0.167        682.235  309.162
+       919  -0.403    -0.100      0.056        0.159        403.880  408.941
+ task.n.wcpm max.counts.total.wcpm wcpm.map se.wcpm.map
+      12.000               769.000  109.621       4.538
+      12.000               769.000  100.251       4.139
+      12.000               769.000   93.736       3.875
+      12.000               769.000   92.668       4.033
+       8.000               445.000   27.896       1.675
+      12.000               769.000  101.248       4.173
+      12.000               769.000  100.651       4.147
+      12.000               769.000  113.526       4.701
+      10.000               670.000   78.089       3.366
+      12.000               769.000  126.608       5.212
+      12.000               769.000  111.278       4.600
+      12.000               769.000  123.138       5.081
+      11.000               717.000   91.162       4.064
+      12.000               769.000  137.634       5.708
+      12.000               769.000  115.375       4.867
+      11.000               683.000   90.271       4.288
+       7.000               455.000   53.156       3.068
+       5.000               255.000   48.387       3.281
+       3.000               175.000   33.406       3.197
+       3.000               188.000   55.653       4.386
+       5.000               293.000   73.517       5.159
+       2.000               123.000   57.645       5.601
+      12.000               769.000   89.407       3.699
+       9.000               540.000   55.907       3.121
+      12.000               769.000   71.510       3.091
+      11.000               719.000   96.255       4.057
+      12.000               769.000   59.983       2.585
+      12.000               769.000  169.301       7.072
+      12.000               769.000  161.059       6.776
+       9.000               518.000   48.515       2.500
+      12.000               769.000   88.210       3.885
+       9.000               554.000  102.719       4.861
+      12.000               769.000   72.386       3.042
+      12.000               769.000   82.897       3.501
+      11.000               681.000   72.660       3.396
+      10.000               642.000   90.781       4.148
+      12.000               769.000   81.609       3.514
+      11.000               719.000  130.192       5.481
+      12.000               769.000   71.548       2.961
+      12.000               769.000  125.124       5.157
+      12.000               769.000  100.504       4.160
+      12.000               769.000  109.229       4.739
+       5.000               320.000   49.157       3.668
+      12.000               769.000  123.991       5.218
+      10.000               667.000   86.222       3.848
+       8.000               511.000   99.286       4.927
+       2.000               103.000   24.585       2.976
+      12.000               769.000  117.152       4.933
+      11.000               681.000   87.002       4.047
+      11.000               719.000  115.402       4.800
+       7.000               429.000   68.367       4.002
+       9.000               577.000   73.494       3.897
+       2.000               139.000   58.247       6.793
+       7.000               392.000   89.704       5.451
+      11.000               720.000  110.874       4.732
+      12.000               769.000   72.652       3.067
+      10.000               607.000   50.592       2.424
+      12.000               769.000  112.468       4.664
+       8.000               454.000   80.119       4.558
+      11.000               681.000   82.643       3.693
+      12.000               769.000   74.730       3.200
+      10.000               595.000   99.677       4.828
+       9.000               558.000   49.023       2.595
+      11.000               683.000   81.978       3.730
+       7.000               442.000   92.779       5.880
+      11.000               693.000   66.486       3.078
+      10.000               604.000   69.975       3.444
+      10.000               633.000   67.803       3.236
+      12.000               769.000  106.062       4.452
+       8.000               456.000   53.366       2.856
+      12.000               769.000  106.118       4.457
+       6.000               355.000   75.052       4.680
+      11.000               683.000   75.561       3.348
+      12.000               769.000  110.322       4.579
+      12.000               769.000   73.168       3.081
+      12.000               769.000  109.640       4.566
+      12.000               769.000  139.140       5.746
+      11.000               693.000  119.654       5.414
+       7.000               378.000   44.690       2.830
+       6.000               368.000   62.452       4.254
+      11.000               718.000  121.647       5.362
+      11.000               681.000  106.550       4.892
+      11.000               683.000  110.833       4.991
+      11.000               717.000  132.404       5.781
+       7.000               442.000   59.257       3.423</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>sample.cases <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">cases =</span> <span class="fu">c</span>(<span class="st">"2033_fall"</span>, <span class="st">"2043_fall"</span>, <span class="st">"2089_fall"</span>))</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>WCPM_sample_ext2 <span class="ot">&lt;-</span> <span class="fu">scoring</span>(<span class="at">calib.data=</span>MCEM_run1, </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>                            <span class="at">data =</span> data<span class="sc">$</span>data.long,</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>                            <span class="at">cases =</span> sample.cases, </span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>                            <span class="at">external =</span> <span class="fu">c</span>(<span class="st">"32004"</span>,<span class="st">"32010"</span>,<span class="st">"32015"</span>,<span class="st">"32016"</span>,<span class="st">"33003"</span>,<span class="st">"33037"</span>),</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>                            <span class="at">est =</span> <span class="st">"map"</span>, </span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>                            <span class="at">se =</span> <span class="st">"analytic"</span>,</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>                            <span class="at">type =</span> <span class="st">"orf"</span>)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(WCPM_sample_ext2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> person.id tau.map theta.map se.tau.map se.theta.map obs.counts.map secs.map
+      2033   0.182     0.399      0.042        0.152        342.545  190.472
+      2043  -0.220     0.036      0.041        0.135        333.852  284.847
+      2089  -0.486    -1.004      0.045        0.126        293.754  371.472
+ task.n.wcpm max.counts.total.wcpm wcpm.map se.wcpm.map
+       6.000               364.000  107.904       4.613
+       6.000               364.000   70.322       2.981
+       6.000               364.000   47.447       2.349</code></pre>
+</div>
 </div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Task Calibration for Task-Level Data – bspam Web</title>
+<title>Scoring 2: Special Cases – bspam Web</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -105,6 +105,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="styles.css">
@@ -150,7 +152,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./T02_Task_Calibration.html">Task Calibration</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./T05_Scoring_2.html">Scoring 2: Special Cases</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -176,7 +178,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./T02_Task_Calibration.html" class="sidebar-item-text sidebar-link active">
+  <a href="./T02_Task_Calibration.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Task Calibration</span></a>
   </div>
 </li>
@@ -194,7 +196,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./T05_Scoring_2.html" class="sidebar-item-text sidebar-link">
+  <a href="./T05_Scoring_2.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Scoring 2: Special Cases</span></a>
   </div>
 </li>
@@ -227,11 +229,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
-  <li><a href="#load-packages" id="toc-load-packages" class="nav-link" data-scroll-target="#load-packages">Load Packages</a></li>
-  <li><a href="#passage-calibration" id="toc-passage-calibration" class="nav-link" data-scroll-target="#passage-calibration">Passage Calibration</a></li>
-  <li><a href="#interpretations" id="toc-interpretations" class="nav-link" data-scroll-target="#interpretations">Interpretations</a></li>
-  <li><a href="#note" id="toc-note" class="nav-link" data-scroll-target="#note">Note</a></li>
-  <li><a href="#bayesian-calibration" id="toc-bayesian-calibration" class="nav-link" data-scroll-target="#bayesian-calibration">Bayesian Calibration</a></li>
+  <li><a href="#preparation" id="toc-preparation" class="nav-link" data-scroll-target="#preparation">Preparation</a></li>
+  <li><a href="#scoring-for-selected-cases" id="toc-scoring-for-selected-cases" class="nav-link" data-scroll-target="#scoring-for-selected-cases">Scoring for Selected Cases</a></li>
+  <li><a href="#scoring-for-external-task-set" id="toc-scoring-for-external-task-set" class="nav-link" data-scroll-target="#scoring-for-external-task-set">Scoring for External Task Set</a></li>
+  <li><a href="#scoring-by-bayesian-approach" id="toc-scoring-by-bayesian-approach" class="nav-link" data-scroll-target="#scoring-by-bayesian-approach">Scoring by Bayesian Approach</a></li>
   </ul>
 </nav>
     </div>
@@ -240,7 +241,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Task Calibration for Task-Level Data</h1>
+<h1 class="title">Scoring 2: Special Cases</h1>
 </div>
 
 
@@ -259,104 +260,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>As an example of task calibration, this document demonstrates the passage parameter calibration using <code>passage2</code> example ORF data. Note that a passage is a task in the ORF context.</p>
+<p>In this document, scoring for selected cases and scoring for external task set are presented. We still use the <code>scoring()</code> function, but we will need to provide additional information in these scenarios.</p>
 </section>
-<section id="load-packages" class="level2">
-<h2 class="anchored" data-anchor-id="load-packages">Load Packages</h2>
-<p>First, we load required packages <code>tidyverse</code> and <code>bspam</code>, and the example data set <code>passage2</code>.</p>
+<section id="preparation" class="level2">
+<h2 class="anchored" data-anchor-id="preparation">Preparation</h2>
+<p>Load required packages.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(bspam)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"passage2"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(bspam)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</section>
-<section id="passage-calibration" class="level2">
-<h2 class="anchored" data-anchor-id="passage-calibration">Passage Calibration</h2>
-<p>We will use the <code>fit.model()</code> function with the default estimation method, which is the Monte Carlo EM algorithm described in Potgieter et al.&nbsp;(2025).</p>
-<p>The <code>fit.model()</code> function requires several arguments. The description of the arguments are summarized in the table below.</p>
-<table class="caption-top table">
-<caption>Table 2-1. Key Arguments for the fit.model( ) Function for Fitting Task-Level model</caption>
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Arguments</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>data</code></td>
-<td>Yes</td>
-<td>The name of the data-frame object</td>
-</tr>
-<tr class="even">
-<td><code>person.id</code></td>
-<td>Yes</td>
-<td>Quoted variable name in <code>data</code> for the unique person identifier. In the ORF context, typically student ID.</td>
-</tr>
-<tr class="odd">
-<td><code>task.id</code></td>
-<td>Yes</td>
-<td>Quoted variable name in <code>data</code> for the task identifier. In ORF context, passage ID.</td>
-</tr>
-<tr class="even">
-<td><code>max.count</code></td>
-<td>Yes</td>
-<td>Quoted variable name in <code>data</code> for the number of attempts in the task. In ORF context, the number of attempted words in the passage.</td>
-</tr>
-<tr class="odd">
-<td><code>obs.count</code></td>
-<td>Yes</td>
-<td>Quoted variable name in <code>data</code> for the number of successful attempts in the task. In ORF context, the number of correctly read words.</td>
-</tr>
-<tr class="even">
-<td><code>time</code></td>
-<td>Yes</td>
-<td>Quoted variable name in <code>data</code> for the time in seconds to complete the task. In ORF context, time to complete reading the passage.</td>
-</tr>
-<tr class="odd">
-<td><code>occasion</code></td>
-<td>Optional</td>
-<td>Quoted variable name in <code>data</code> for indicating different measurement occasions.</td>
-</tr>
-<tr class="even">
-<td><code>group</code></td>
-<td>Optional</td>
-<td>The variable name in the data for indicating different groups of individuals, such as grade levels.</td>
-</tr>
-<tr class="odd">
-<td><code>k.in</code></td>
-<td>Optional</td>
-<td>The number of EM imputations. The default is <code>k.in = 5</code> .</td>
-</tr>
-<tr class="even">
-<td><code>reps.in</code></td>
-<td>Optional</td>
-<td>The number of Monte-Carlo iterations. The default is <code>reps.in = 2</code> .</td>
-</tr>
-<tr class="odd">
-<td><code>est</code></td>
-<td>Optional</td>
-<td>Quoted string, indicating the choice of the estimator. It has to be <code>"mcem"</code> or <code>"bayes"</code>. Default is <code>"mcem"</code> .</td>
-</tr>
-<tr class="even">
-<td><code>se</code></td>
-<td>Optional</td>
-<td>Quoted string, indicating the choice of the standard errors. It has to be one of <code>"none"</code> , <code>"analytic"</code> , or <code>"bootstrap"</code> . Default is <code>"none"</code> .</td>
-</tr>
-<tr class="odd">
-<td><code>verbose</code></td>
-<td>Optional</td>
-<td>If TRUE, the summary will be output. Default is FALSE.</td>
-</tr>
-</tbody>
-</table>
-<p>With minimally required arguments, the specification for the <code>fit.mode()</code> function to fit the <code>passage2</code> data look like as follows. Note that the only optional argument included is <code>reps.in = 50</code> where the number of Monte-Carlo iterations is set to 50, rather than 2 by default.</p>
+<p>Again, the scoring requires calibration results saved as an object. If a calibration result object has not been saved, run a calibration process, such as:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>MCEM_run1 <span class="ot">&lt;-</span> <span class="fu">fit.model</span>(<span class="at">data =</span> passage2,</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                       <span class="at">person.id =</span> <span class="st">"id.student"</span>,</span>
@@ -366,58 +279,153 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>                       <span class="at">time =</span> <span class="st">"sec"</span>,</span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>                       <span class="at">reps.in =</span> <span class="dv">50</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+</section>
+<section id="scoring-for-selected-cases" class="level2">
+<h2 class="anchored" data-anchor-id="scoring-for-selected-cases">Scoring for Selected Cases</h2>
+<p>If the scoring for only selected cases are desired, a list of cases needs to be provided by the cases = argument. The list of cases has to be a one-variable data frame with a variable name <code>cases</code>. The format of case values should be: personid_occasion. This one-variable data frame can be created manually, just like shown below. Also, it can be generated by the get.cases() function.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>MCEM_run1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>sample.cases <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">cases =</span> <span class="fu">c</span>(<span class="st">"2033_fall"</span>, <span class="st">"2043_fall"</span>, <span class="st">"2089_fall"</span>))</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>WCPM_sample <span class="ot">&lt;-</span> <span class="fu">scoring</span>(<span class="at">calib.data =</span> MCEM_run1, </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>                       <span class="at">data =</span> passage2,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>                       <span class="at">person.id =</span> <span class="st">"id.student"</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>                       <span class="at">occasion =</span> <span class="st">"occasion"</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>                       <span class="at">group =</span> <span class="st">"grade"</span>,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>                       <span class="at">task.id =</span> <span class="st">"id.passage"</span>,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>                       <span class="at">max.counts =</span> <span class="st">"numwords.pass"</span>,</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>                       <span class="at">obs.counts =</span> <span class="st">"wrc"</span>,</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>                       <span class="at">time =</span> <span class="st">"sec"</span>,</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>                       <span class="at">cases =</span> sample.cases,</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>                       <span class="at">est =</span> <span class="st">"eap"</span>, </span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>                       <span class="at">se =</span> <span class="st">"analytic"</span>,</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>                       <span class="at">type =</span> <span class="st">"orf"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">summary</span>(WCPM_sample), <span class="at">digits =</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  kableExtra<span class="sc">::</span><span class="fu">scroll_box</span>(<span class="at">width =</span> <span class="st">"100%"</span>, <span class="at">height =</span> <span class="st">"400px"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>$task.param
-# A tibble: 12 × 6
-       a     b alpha  beta task.id max.counts
-   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;      &lt;int&gt;
- 1 0.336 -1.43  6.14  1.75   22078         50
- 2 0.292 -1.38  8.09  1.74   23019         88
- 3 0.391 -1.38  7.25  1.80   32004         52
- 4 0.466 -1.54  8.17  1.82   32010         52
- 5 0.331 -1.37  5.20  1.74   32012         49
- 6 0.589 -1.45  6.92  1.83   32015         51
- 7 0.394 -1.44  2.54  1.99   32016         50
- 8 0.473 -1.09  7.55  1.86   33003         86
- 9 0.664 -1.45  7.31  1.75   33037         73
-10 0.594 -1.39  6.83  1.79   33040         76
-11 0.514 -1.31  5.96  1.80   42055         53
-12 0.480 -1.34  9.13  1.87   43030         89
-
-$hyper.param
-# A tibble: 1 × 2
-  vartau   rho
-   &lt;dbl&gt; &lt;dbl&gt;
-1 0.0999 0.447
-
-attr(,"class")
-[1] "fit.model"</code></pre>
+<pre><code> person.id tau.eap theta.eap se.tau.eap se.theta.eap obs.counts.eap secs.eap
+      2033   0.164     0.375      0.037        0.144        675.969  369.460
+      2043  -0.245     0.021      0.032        0.129        703.955  591.532
+      2089  -0.460    -0.972      0.037        0.120        503.584  577.677
+ task.n.wcpm max.counts.total.wcpm wcpm.eap se.wcpm.eap
+      11.000               720.000  109.777       4.204
+      12.000               769.000   71.403       2.411
+      10.000               607.000   52.304       2.140</code></pre>
+</div>
+<div class="cell-output-display">
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:400px; overflow-x: scroll; width:100%; ">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">person.id</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">tau.eap</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">theta.eap</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">se.tau.eap</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">se.theta.eap</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">obs.counts.eap</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">secs.eap</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">task.n.wcpm</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">max.counts.total.wcpm</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">wcpm.eap</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">se.wcpm.eap</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2033</td>
+<td style="text-align: right;">0.16</td>
+<td style="text-align: right;">0.37</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">0.14</td>
+<td style="text-align: right;">675.97</td>
+<td style="text-align: right;">369.46</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">720</td>
+<td style="text-align: right;">109.78</td>
+<td style="text-align: right;">4.20</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2043</td>
+<td style="text-align: right;">-0.25</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">0.03</td>
+<td style="text-align: right;">0.13</td>
+<td style="text-align: right;">703.95</td>
+<td style="text-align: right;">591.53</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">769</td>
+<td style="text-align: right;">71.40</td>
+<td style="text-align: right;">2.41</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2089</td>
+<td style="text-align: right;">-0.46</td>
+<td style="text-align: right;">-0.97</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">0.12</td>
+<td style="text-align: right;">503.58</td>
+<td style="text-align: right;">577.68</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">607</td>
+<td style="text-align: right;">52.30</td>
+<td style="text-align: right;">2.14</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
+</div>
 </section>
-<section id="interpretations" class="level2">
-<h2 class="anchored" data-anchor-id="interpretations">Interpretations</h2>
-<p>Under the <em>$task.param</em>, estimated passage parameters are outputted. Accuracy parameters are <em>a</em> and <em>b</em>, where <em>a</em> is the discrimination parameter and <em>b</em> is the difficulty parameter, similar to the interpretations of 2-parameter item response theory (IRT) model parameters. Thus, a higher <em>b</em> indicates easier passage to read more accurately, and a higher <em>a</em> indicates a passage with higher association the probability of reading words correctly and the latent trait of accuracy. On the other hand, <em>alpha</em> and <em>beta</em> are time-intensity parameters (or time-difficulty) of passages. A higher <em>beta</em> indicates a passage which takes more time, given the same latent speed ability. It is in the scale of the logarithm of seconds to read per 10 words.</p>
-<p>Based on the result, Passage 32010 had the lowest <code>b</code>, indicating the easiest in accuracy, while Passages 33003 had the highest <code>b</code>, indicating the hardest in accuracy. These are consistent with the descriptive statistics presented above. On the other hand, based on the estimated <em>beta</em>, Passage 23019 was among the easiest in time intensity, while Passage 32016 was most difficult in time intensity, again, consistent with the descriptive statistics above.</p>
-</section>
-<section id="note" class="level2">
-<h2 class="anchored" data-anchor-id="note">Note</h2>
-<p>By default, the standard errors for the model parameters are not estimated. This will allow one to increase the number of Monte-Carlo iterations <code>reps.in</code> to improve the quality of the model parameter estimates, while minimizing the computation time. The number of <code>reps.in</code> should be 50 to 100 in realistic calibrations. Also note that <code>k.in</code> is the number of imputations for the MCEM algorithm, where the default is 5. Note that SE’s for model parameters are not required for running the <code>scoring()</code> function to estimate latent factor scores and WCPM scores in the next step. If standard errors for model parameters are desired, an additional argument <code>se = "analytic"</code> or <code>se = "bootstrap"</code> needs to be added to the <code>fit.model()</code> function.</p>
-</section>
-<section id="bayesian-calibration" class="level2">
-<h2 class="anchored" data-anchor-id="bayesian-calibration">Bayesian Calibration</h2>
-<p>Task/passage calibration can also be performed by providing <code>est = "bayes"</code> argument. This will implement a fully Bayesian approach through Gibbs sampling by <em>JAGS</em> or Hamiltonian Monte Carlo by <em>Stan</em>. Currently, <code>bspam</code> uses <em>Stan</em> with complete data, that is, if all individuals have data on all tasks. Otherwise, <code>bspam</code> uses JAGS because it provides faster computations with missing observations. Note that <code>bspam</code> runs <em>JAGS</em> in its auto mode, which does not require the user to supply any specifications typically required for the Bayesian estimation, including the number of iterations and monitoring convergence. The standard deviations of the posterior distributions are reported in lieu of the standard errors. A specification for the <code>fit.model( )</code> function can look like as follows.</p>
+<section id="scoring-for-external-task-set" class="level2">
+<h2 class="anchored" data-anchor-id="scoring-for-external-task-set">Scoring for External Task Set</h2>
+<p>Also, we can specify a set of tasks (i.e., passages) to scale the WCPM scores. If WCPM scores are scaled with a set of passages that is different from the set of passages the student read, the set of passages is referred to as an <strong>external passage set</strong> for the ORF assessment context, or <strong>external task set</strong> in general.</p>
+<p>The use of an external passage set is particularly important in the context of ORF assessment to make the estimated WCPM scores to be comparable between students who read different sets of passages, as well as within students for longitudinal data, where a student is likely to read different sets of passages.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>Bayes_run <span class="ot">&lt;-</span> <span class="fu">fit.model</span>(<span class="at">data =</span> passage2,</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>                       <span class="at">person.id =</span> <span class="st">"id.student"</span>,</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                       <span class="at">task.id =</span> <span class="st">"id.passage"</span>,</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>                       <span class="at">max.counts =</span> <span class="st">"numwords.pass"</span>,</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>                       <span class="at">obs.counts =</span> <span class="st">"wrc"</span>,</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>                       <span class="at">time =</span> <span class="st">"sec"</span>,</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>                       <span class="at">est =</span> <span class="st">"bayes"</span>,</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>                       <span class="at">verbose=</span><span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>WCPM_sample_ext1 <span class="ot">&lt;-</span> <span class="fu">scoring</span>(<span class="at">calib.data =</span> MCEM_run1, </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>                            <span class="at">data =</span> passage2,</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>                            <span class="at">person.id =</span> <span class="st">"id.student"</span>,</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>                            <span class="at">occasion =</span> <span class="st">"occasion"</span>,</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>                            <span class="at">group =</span> <span class="st">"grade"</span>,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>                            <span class="at">task.id =</span> <span class="st">"id.passage"</span>,</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>                            <span class="at">max.counts =</span> <span class="st">"numwords.pass"</span>,</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>                            <span class="at">obs.counts =</span> <span class="st">"wrc"</span>,</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>                            <span class="at">time =</span> <span class="st">"sec"</span>,</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>                            <span class="at">cases =</span> sample.cases, </span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>                            <span class="at">external =</span> <span class="fu">c</span>(<span class="st">"32004"</span>,<span class="st">"32010"</span>,<span class="st">"32015"</span>,<span class="st">"32016"</span>,<span class="st">"33003"</span>,<span class="st">"33037"</span>),</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>                            <span class="at">est =</span> <span class="st">"eap"</span>, </span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>                            <span class="at">se =</span> <span class="st">"analytic"</span>,</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>                            <span class="at">type =</span> <span class="st">"orf"</span>)</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(WCPM_sample_ext1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> person.id tau.eap theta.eap se.tau.eap se.theta.eap obs.counts.eap secs.eap
+      2033   0.164     0.375      0.037        0.144        341.777  192.048
+      2043  -0.245     0.021      0.032        0.129        332.751  289.181
+      2089  -0.460    -0.972      0.037        0.120        292.302  358.580
+ task.n.wcpm max.counts.total.wcpm wcpm.eap se.wcpm.eap
+       6.000               364.000  106.779       4.101
+       6.000               364.000   69.040       2.350
+       6.000               364.000   48.910       2.100</code></pre>
+</div>
+</div>
+</section>
+<section id="scoring-by-bayesian-approach" class="level2">
+<h2 class="anchored" data-anchor-id="scoring-by-bayesian-approach">Scoring by Bayesian Approach</h2>
+<p>A fully Bayesian approach can also be used as an estimator in the <code>scoring()</code> function. Note that if <code>est="bayes"</code> is specified, there is no need to use the <code>se=</code> argument. By default, the standard deviations of the posterior distributions are reported as the standard errors, along with 95% high density intervals, which is analogous to 95% confidence intervals. Here is an example of using the fully Bayesian approach for estimating WCPM scores from the same external passages used in the previous example.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>WCPM_sample_ext1_bayes <span class="ot">&lt;-</span> <span class="fu">scoring</span>(<span class="at">calib.data=</span>MCEM_run1, </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">data =</span> passage2,</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">person.id =</span> <span class="st">"id.student"</span>,</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">occasion =</span> <span class="st">"occasion"</span>,</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">group =</span> <span class="st">"grade"</span>,</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">task.id =</span> <span class="st">"id.passage"</span>,</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">max.counts =</span> <span class="st">"numwords.pass"</span>,</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">obs.counts =</span> <span class="st">"wrc"</span>,</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">time =</span> <span class="st">"sec"</span>,</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">cases =</span> sample.cases, </span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">external =</span> <span class="fu">c</span>(<span class="st">"32004"</span>,<span class="st">"32010"</span>,<span class="st">"32015"</span>,<span class="st">"32016"</span>,<span class="st">"33003"</span>,<span class="st">"33037"</span>),</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">est =</span> <span class="st">"bayes"</span>,</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">type =</span> <span class="st">"orf"</span>)</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(WCPM_sample_ext1_bayes)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 
