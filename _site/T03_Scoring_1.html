@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Scoring 1 – bspam Web</title>
+<title>Scoring 1: Basics – bspam Web</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -181,7 +181,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./T03_Scoring_1.html">Scoring 1</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./T03_Scoring_1.html">Scoring 1: Basics</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -214,7 +214,37 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./T03_Scoring_1.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Scoring 1</span></a>
+ <span class="menu-text">Scoring 1: Basics</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./T04_Plotting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Plotting Results</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./T05_Scoring_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Scoring 2: Special Cases</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./T06_Scoring_3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Scoring 3: Alternative Two-Step Procesure</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./T07_Testlet.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Testlet Model</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./T08_Truncated_Data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Truncated Response Data</span></a>
   </div>
 </li>
     </ul>
@@ -232,8 +262,8 @@ window.Quarto = {
   <li><a href="#scoring-for-all-cases" id="toc-scoring-for-all-cases" class="nav-link" data-scroll-target="#scoring-for-all-cases">Scoring for All Cases</a>
   <ul class="collapse">
   <li><a href="#the-content-of-output" id="toc-the-content-of-output" class="nav-link" data-scroll-target="#the-content-of-output">The Content of Output</a></li>
-  <li><a href="#scoring-for-selected-cases" id="toc-scoring-for-selected-cases" class="nav-link" data-scroll-target="#scoring-for-selected-cases">Scoring for Selected Cases</a></li>
   </ul></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
   </ul>
 </nav>
     </div>
@@ -242,7 +272,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Scoring 1</h1>
+<h1 class="title">Scoring 1: Basics</h1>
 </div>
 
 
@@ -272,7 +302,7 @@ window.Quarto = {
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(bspam)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>The scoring requires calibration results.</p>
+<p>The scoring requires calibration results saved as an object.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>MCEM_run1 <span class="ot">&lt;-</span> <span class="fu">fit.model</span>(<span class="at">data =</span> passage2,</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                       <span class="at">person.id =</span> <span class="st">"id.student"</span>,</span>
@@ -1623,104 +1653,11 @@ window.Quarto = {
 <li><p><code>se.wcpm.eap</code>: Standard error of the EAP estimated WCPM scores.</p></li>
 </ol>
 </section>
-<section id="scoring-for-selected-cases" class="level3">
-<h3 class="anchored" data-anchor-id="scoring-for-selected-cases">Scoring for Selected Cases</h3>
-<p>If the scoring for only selected cases are desired, a list of cases needs to be provided by the cases = argument. The list of cases has to be a one-variable data frame with a variable name <code>cases</code>. The format of case values should be: personid_occasion. This one-variable data frame can be created manually, just like shown below. Also, it can be generated by the get.cases() function.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>sample.cases <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">cases =</span> <span class="fu">c</span>(<span class="st">"2033_fall"</span>, <span class="st">"2043_fall"</span>, <span class="st">"2089_fall"</span>))</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>WCPM_sample <span class="ot">&lt;-</span> <span class="fu">scoring</span>(<span class="at">calib.data =</span> MCEM_run1, </span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>                       <span class="at">data =</span> passage2,</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>                       <span class="at">person.id =</span> <span class="st">"id.student"</span>,</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>                       <span class="at">occasion =</span> <span class="st">"occasion"</span>,</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>                       <span class="at">group =</span> <span class="st">"grade"</span>,</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>                       <span class="at">task.id =</span> <span class="st">"id.passage"</span>,</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>                       <span class="at">max.counts =</span> <span class="st">"numwords.pass"</span>,</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>                       <span class="at">obs.counts =</span> <span class="st">"wrc"</span>,</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>                       <span class="at">time =</span> <span class="st">"sec"</span>,</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>                       <span class="at">cases =</span> sample.cases,</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>                       <span class="at">est =</span> <span class="st">"eap"</span>, </span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>                       <span class="at">se =</span> <span class="st">"analytic"</span>,</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>                       <span class="at">type =</span> <span class="st">"orf"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">summary</span>(WCPM_sample), <span class="at">digits =</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  kableExtra<span class="sc">::</span><span class="fu">scroll_box</span>(<span class="at">width =</span> <span class="st">"100%"</span>, <span class="at">height =</span> <span class="st">"400px"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> person.id tau.eap theta.eap se.tau.eap se.theta.eap obs.counts.eap secs.eap
-      2033   0.188     0.387      0.049        0.150        676.072  366.462
-      2043  -0.201     0.016      0.051        0.134        703.980  575.157
-      2089  -0.481    -1.019      0.047        0.126        503.637  599.095
- task.n.wcpm max.counts.total.wcpm wcpm.eap se.wcpm.eap
-      11.000               720.000  110.692       5.550
-      12.000               769.000   73.439       3.818
-      10.000               607.000   50.440       2.543</code></pre>
-</div>
-<div class="cell-output-display">
-<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:400px; overflow-x: scroll; width:100%; ">
-<table class="caption-top table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">person.id</th>
-<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">tau.eap</th>
-<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">theta.eap</th>
-<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">se.tau.eap</th>
-<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">se.theta.eap</th>
-<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">obs.counts.eap</th>
-<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">secs.eap</th>
-<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">task.n.wcpm</th>
-<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">max.counts.total.wcpm</th>
-<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">wcpm.eap</th>
-<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">se.wcpm.eap</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">2033</td>
-<td style="text-align: right;">0.19</td>
-<td style="text-align: right;">0.39</td>
-<td style="text-align: right;">0.05</td>
-<td style="text-align: right;">0.15</td>
-<td style="text-align: right;">676.07</td>
-<td style="text-align: right;">366.46</td>
-<td style="text-align: right;">11</td>
-<td style="text-align: right;">720</td>
-<td style="text-align: right;">110.69</td>
-<td style="text-align: right;">5.55</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">2043</td>
-<td style="text-align: right;">-0.20</td>
-<td style="text-align: right;">0.02</td>
-<td style="text-align: right;">0.05</td>
-<td style="text-align: right;">0.13</td>
-<td style="text-align: right;">703.98</td>
-<td style="text-align: right;">575.16</td>
-<td style="text-align: right;">12</td>
-<td style="text-align: right;">769</td>
-<td style="text-align: right;">73.44</td>
-<td style="text-align: right;">3.82</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">2089</td>
-<td style="text-align: right;">-0.48</td>
-<td style="text-align: right;">-1.02</td>
-<td style="text-align: right;">0.05</td>
-<td style="text-align: right;">0.13</td>
-<td style="text-align: right;">503.64</td>
-<td style="text-align: right;">599.10</td>
-<td style="text-align: right;">10</td>
-<td style="text-align: right;">607</td>
-<td style="text-align: right;">50.44</td>
-<td style="text-align: right;">2.54</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-
-
 </section>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section"></h2>
+
+
 </section>
 
 </main> <!-- /main -->

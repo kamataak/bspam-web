@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Plotting Results – bspam Web</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-86d7884a850005ff72cd0992b9f7d005.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="site_libs/plotly-binding-4.12.0/plotly.js"></script>
+<script src="site_libs/typedarray-0.1/typedarray.min.js"></script>
+<script src="site_libs/jquery-3.5.1/jquery.min.js"></script>
+<link href="site_libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet">
+<script src="site_libs/crosstalk-1.2.2/js/crosstalk.min.js"></script>
+<link href="site_libs/plotly-htmlwidgets-css-2.25.2/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="site_libs/plotly-main-2.25.2/plotly-latest.min.js"></script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">bspam Web</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">About bspam</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./tutorial-intro.html" aria-current="page"> 
+<span class="menu-text">Tutorial</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./resources.html"> 
+<span class="menu-text">Resources</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./T04_Plotting.html">Plotting Results</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tutorial-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tutorial: Introduction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./T01_Data_Exploration.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Exploration</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./T02_Task_Calibration.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Task Calibration</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./T03_Scoring_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Scoring 1: Basics</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./T04_Plotting.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Plotting Results</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./T05_Scoring_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Scoring 2: Special Cases</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./T06_Scoring_3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Scoring 3: Alternative Two-Step Procesure</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./T07_Testlet.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Testlet Model</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./T08_Truncated_Data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Truncated Response Data</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#preparation" id="toc-preparation" class="nav-link" data-scroll-target="#preparation">Preparation</a></li>
+  <li><a href="#plot-calibration-results" id="toc-plot-calibration-results" class="nav-link" data-scroll-target="#plot-calibration-results">Plot Calibration Results</a></li>
+  <li><a href="#plot-scoring-results" id="toc-plot-scoring-results" class="nav-link" data-scroll-target="#plot-scoring-results">Plot Scoring Results</a></li>
+  <li><a href="#plot-information-function" id="toc-plot-information-function" class="nav-link" data-scroll-target="#plot-information-function">Plot Information Function</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Plotting Results</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>The <code>bspam</code> package has some functions to plot results from calibration and scoring.</p>
+</section>
+<section id="preparation" class="level2">
+<h2 class="anchored" data-anchor-id="preparation">Preparation</h2>
+<p>Load required packages.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(bspam)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Functions to plot results read an object that contains calibration results or scoring results.</p>
+<p>The scoring requires calibration results saved as an object.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>MCEM_run1 <span class="ot">&lt;-</span> <span class="fu">fit.model</span>(<span class="at">data =</span> passage2,</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                       <span class="at">person.id =</span> <span class="st">"id.student"</span>,</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                       <span class="at">task.id =</span> <span class="st">"id.passage"</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                       <span class="at">max.counts =</span> <span class="st">"numwords.pass"</span>,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                       <span class="at">obs.counts =</span> <span class="st">"wrc"</span>,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>                       <span class="at">time =</span> <span class="st">"sec"</span>,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>                       <span class="at">reps.in =</span> <span class="dv">50</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>WCPM_all <span class="ot">&lt;-</span> <span class="fu">scoring</span>(<span class="at">calib.data=</span>MCEM_run1, </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">data =</span> passage2,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">person.id =</span> <span class="st">"id.student"</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">occasion =</span> <span class="st">"occasion"</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">group =</span> <span class="st">"grade"</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>                    <span class="at">task.id =</span> <span class="st">"id.passage"</span>,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>                    <span class="at">max.counts =</span> <span class="st">"numwords.pass"</span>,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>                    <span class="at">obs.counts =</span> <span class="st">"wrc"</span>,</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>                    <span class="at">time =</span> <span class="st">"sec"</span>,</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>                    <span class="at">est =</span> <span class="st">"map"</span>, </span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>                    <span class="at">se =</span> <span class="st">"analytic"</span>,</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>                    <span class="at">type=</span><span class="st">"orf"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="plot-calibration-results" class="level2">
+<h2 class="anchored" data-anchor-id="plot-calibration-results">Plot Calibration Results</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.task</span>(MCEM_run1, <span class="at">parameter =</span> <span class="st">"a"</span>, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div id="htmlwidget-7cdf55411a1c5667234c" style="width:100%;height:386px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7cdf55411a1c5667234c">{"x":{"visdat":{"33d3578a0d75":["function () ","plotlyVisDat"]},"cur_data":"33d3578a0d75","attrs":{"33d3578a0d75":{"y":{},"x":{},"text":{},"showlegend":false,"hoverinfo":"text","textposition":"none","color":["#CC0035"],"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"}},"layout":{"height":400,"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"a","zeroline":false,"showline":false,"showticklabels":true,"showgrid":true},"yaxis":{"domain":[0,1],"automargin":true,"title":"Task ID","zeroline":false,"showline":false,"showticklabels":true,"showgrid":true,"dtick":1,"type":"category","categoryorder":"array","categoryarray":["23019","32012","22078","32016","32004","33003","32010","43030","42055","32015","33040","33037"]},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"y":["23019","32012","22078","32016","32004","33003","32010","43030","42055","32015","33040","33037"],"x":[0.27935627581387829,0.31781177575394287,0.34004090002210891,0.38433219595018459,0.39234980506093514,0.45221329367856689,0.45541527780728625,0.47318957970857972,0.50687538862527426,0.56561198748817609,0.57720282665734002,0.64431917721884491],"text":["Task ID:  23019 <br>Estimate: 0.279","Task ID:  32012 <br>Estimate: 0.318","Task ID:  22078 <br>Estimate: 0.34","Task ID:  32016 <br>Estimate: 0.384","Task ID:  32004 <br>Estimate: 0.392","Task ID:  33003 <br>Estimate: 0.452","Task ID:  32010 <br>Estimate: 0.455","Task ID:  43030 <br>Estimate: 0.473","Task ID:  42055 <br>Estimate: 0.507","Task ID:  32015 <br>Estimate: 0.566","Task ID:  33040 <br>Estimate: 0.577","Task ID:  33037 <br>Estimate: 0.644"],"showlegend":false,"hoverinfo":["text","text","text","text","text","text","text","text","text","text","text","text"],"textposition":["none","none","none","none","none","none","none","none","none","none","none","none"],"type":"bar","orientation":"h","marker":{"color":"rgba(204,0,53,1)","line":{"color":"rgba(204,0,53,1)"}},"textfont":{"color":"rgba(204,0,53,1)"},"error_y":{"color":"rgba(204,0,53,1)"},"error_x":{"color":"rgba(204,0,53,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+<section id="plot-scoring-results" class="level2">
+<h2 class="anchored" data-anchor-id="plot-scoring-results">Plot Scoring Results</h2>
+<p>Estimated latent factor scores or model-based WCPM scores can be plotted along with their standard errors.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.person</span>(WCPM_all, <span class="at">parameter =</span> <span class="st">"wcpm"</span>, <span class="at">show.se =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div id="htmlwidget-96f04315534ea1f0f508" style="width:100%;height:1068px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-96f04315534ea1f0f508">{"x":{"visdat":{"33d335d82bda":["function () ","plotlyVisDat"]},"cur_data":"33d335d82bda","attrs":{"33d335d82bda":{"y":{},"x":{},"mode":"markers","text":{},"showlegend":false,"hoverinfo":"text","error_x":{"array":{},"color":"lightgray","width":"2"},"textposition":"none","color":["#CC0035"],"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"}},"layout":{"height":1105,"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"wcpm.map","zeroline":false,"showline":false,"showticklabels":true,"showgrid":true},"yaxis":{"domain":[0,1],"automargin":true,"title":"Person ID","zeroline":false,"showline":false,"showticklabels":true,"showgrid":true,"dtick":1,"autosize":true,"tickmode":"linear","type":"category","categoryorder":"array","categoryarray":["1020","1037","1154","1164","1174","1184","1322","1332","1342","1492","1503","1513","1523","1565","157","1575","158","171","1737","1747","1757","1767","177","1777","181","1839","1849","1859","1890","1910","203","2033","2043","2079","2089","2125","2135","2145","2155","2185","2215","2235","2245","2255","2265","2275","2613","2648","2658","2699","2708","271","2718","281","289","291","305","309","335","369","389","396","409","412","58","592","60","629","633","645","66","698","700","705","709","715","830","838","848","909","919","954","964","968","992"]},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"y":["954","1020","968","1037","964","157","158","177","181","203","289","305","309","389","396","409","412","58","592","60","629","633","645","66","698","700","705","709","715","992","1154","1164","1174","1184","1322","1332","1342","1492","1503","1513","1523","1565","1575","171","1737","1747","1757","1767","1777","1839","1849","1859","1890","1910","2033","2043","2089","2079","2125","2135","2145","2155","2185","2215","2235","2245","2255","2265","2275","2613","2648","2658","2699","2708","2718","271","281","291","335","369","830","838","848","909","919"],"x":[109.88987831425328,100.57808829551567,93.901674500064331,92.078805907555335,28.028998878676123,101.1590630325,100.78537132018174,113.62889864686669,77.59008771541238,126.57464426037268,110.84362202317587,123.09030168124177,91.203709187299495,136.95648730436312,115.75480080874993,89.914450864659429,52.602903231956184,48.861898108050589,33.407090606769572,55.629657816572958,73.481244625587863,57.543577925269474,89.378763431562049,55.404017231429606,71.25967145075667,96.35540119788989,59.818384550874121,169.00761749006594,160.32686816482132,48.072889794694177,88.306342773356363,103.14020035256029,72.249687061061465,83.026770113536074,72.872705774531497,91.129582230237006,81.094478411475293,129.61480221979571,71.920366782753405,124.87334113172815,100.25195652508182,109.39715307368373,49.369752308403427,123.79477056973889,86.232769345218429,99.59960856544329,24.83564287574816,116.87594616705741,87.292549697325072,114.65550500558841,68.178765950731645,73.53419792804273,58.49623800198556,89.552801473625081,110.8286155139905,72.607368144614043,51.091838935471927,113.3597014194048,78.556397611039003,83.149855730764031,74.389439271967632,99.122111671247978,49.020508894329126,81.686451934298006,92.604135371778,66.576938614537724,69.665848119278166,68.633520443495698,105.94281973612208,52.995431789837632,106.70910663606506,75.170165684691412,75.228444598539298,110.27862771003916,72.816963354060377,108.98003088519933,138.77636252397076,119.94562042873424,47.56464042807302,62.156820961728187,121.48657257567392,106.94525183708704,111.60067679249939,132.49051609073325,59.437064807879196],"mode":"markers","text":["person ID:  954 <br>Estimate: 109.89 <br>CI Low: 100.988 <br>CI High: 118.792","person ID:  1020 <br>Estimate: 100.578 <br>CI Low: 92.454 <br>CI High: 108.703","person ID:  968 <br>Estimate: 93.902 <br>CI Low: 86.307 <br>CI High: 101.497","person ID:  1037 <br>Estimate: 92.079 <br>CI Low: 84.237 <br>CI High: 99.92","person ID:  964 <br>Estimate: 28.029 <br>CI Low: 24.684 <br>CI High: 31.374","person ID:  157 <br>Estimate: 101.159 <br>CI Low: 93.001 <br>CI High: 109.317","person ID:  158 <br>Estimate: 100.785 <br>CI Low: 92.66 <br>CI High: 108.911","person ID:  177 <br>Estimate: 113.629 <br>CI Low: 104.423 <br>CI High: 122.835","person ID:  181 <br>Estimate: 77.59 <br>CI Low: 71.017 <br>CI High: 84.163","person ID:  203 <br>Estimate: 126.575 <br>CI Low: 116.38 <br>CI High: 136.769","person ID:  289 <br>Estimate: 110.844 <br>CI Low: 101.878 <br>CI High: 119.809","person ID:  305 <br>Estimate: 123.09 <br>CI Low: 113.153 <br>CI High: 133.027","person ID:  309 <br>Estimate: 91.204 <br>CI Low: 83.294 <br>CI High: 99.113","person ID:  389 <br>Estimate: 136.956 <br>CI Low: 125.844 <br>CI High: 148.069","person ID:  396 <br>Estimate: 115.755 <br>CI Low: 106.199 <br>CI High: 125.311","person ID:  409 <br>Estimate: 89.914 <br>CI Low: 81.572 <br>CI High: 98.257","person ID:  412 <br>Estimate: 52.603 <br>CI Low: 46.66 <br>CI High: 58.546","person ID:  58 <br>Estimate: 48.862 <br>CI Low: 42.242 <br>CI High: 55.482","person ID:  592 <br>Estimate: 33.407 <br>CI Low: 27.143 <br>CI High: 39.672","person ID:  60 <br>Estimate: 55.63 <br>CI Low: 46.748 <br>CI High: 64.512","person ID:  629 <br>Estimate: 73.481 <br>CI Low: 63.619 <br>CI High: 83.343","person ID:  633 <br>Estimate: 57.544 <br>CI Low: 46.654 <br>CI High: 68.433","person ID:  645 <br>Estimate: 89.379 <br>CI Low: 82.143 <br>CI High: 96.614","person ID:  66 <br>Estimate: 55.404 <br>CI Low: 49.358 <br>CI High: 61.45","person ID:  698 <br>Estimate: 71.26 <br>CI Low: 65.233 <br>CI High: 77.286","person ID:  700 <br>Estimate: 96.355 <br>CI Low: 88.409 <br>CI High: 104.302","person ID:  705 <br>Estimate: 59.818 <br>CI Low: 54.774 <br>CI High: 64.862","person ID:  709 <br>Estimate: 169.008 <br>CI Low: 155.194 <br>CI High: 182.821","person ID:  715 <br>Estimate: 160.327 <br>CI Low: 147.127 <br>CI High: 173.527","person ID:  992 <br>Estimate: 48.073 <br>CI Low: 43.177 <br>CI High: 52.968","person ID:  1154 <br>Estimate: 88.306 <br>CI Low: 80.694 <br>CI High: 95.919","person ID:  1164 <br>Estimate: 103.14 <br>CI Low: 93.472 <br>CI High: 112.809","person ID:  1174 <br>Estimate: 72.25 <br>CI Low: 66.308 <br>CI High: 78.191","person ID:  1184 <br>Estimate: 83.027 <br>CI Low: 76.166 <br>CI High: 89.887","person ID:  1322 <br>Estimate: 72.873 <br>CI Low: 66.2 <br>CI High: 79.545","person ID:  1332 <br>Estimate: 91.13 <br>CI Low: 83.015 <br>CI High: 99.245","person ID:  1342 <br>Estimate: 81.094 <br>CI Low: 74.263 <br>CI High: 87.926","person ID:  1492 <br>Estimate: 129.615 <br>CI Low: 118.937 <br>CI High: 140.293","person ID:  1503 <br>Estimate: 71.92 <br>CI Low: 66.097 <br>CI High: 77.744","person ID:  1513 <br>Estimate: 124.873 <br>CI Low: 114.803 <br>CI High: 134.944","person ID:  1523 <br>Estimate: 100.252 <br>CI Low: 92.133 <br>CI High: 108.371","person ID:  1565 <br>Estimate: 109.397 <br>CI Low: 100.11 <br>CI High: 118.684","person ID:  1575 <br>Estimate: 49.37 <br>CI Low: 42.211 <br>CI High: 56.529","person ID:  171 <br>Estimate: 123.795 <br>CI Low: 113.599 <br>CI High: 133.991","person ID:  1737 <br>Estimate: 86.233 <br>CI Low: 78.746 <br>CI High: 93.719","person ID:  1747 <br>Estimate: 99.6 <br>CI Low: 89.887 <br>CI High: 109.312","person ID:  1757 <br>Estimate: 24.836 <br>CI Low: 18.843 <br>CI High: 30.828","person ID:  1767 <br>Estimate: 116.876 <br>CI Low: 107.246 <br>CI High: 126.506","person ID:  1777 <br>Estimate: 87.293 <br>CI Low: 79.337 <br>CI High: 95.248","person ID:  1839 <br>Estimate: 114.656 <br>CI Low: 105.325 <br>CI High: 123.986","person ID:  1849 <br>Estimate: 68.179 <br>CI Low: 60.195 <br>CI High: 76.162","person ID:  1859 <br>Estimate: 73.534 <br>CI Low: 65.949 <br>CI High: 81.119","person ID:  1890 <br>Estimate: 58.496 <br>CI Low: 45.344 <br>CI High: 71.648","person ID:  1910 <br>Estimate: 89.553 <br>CI Low: 78.7 <br>CI High: 100.406","person ID:  2033 <br>Estimate: 110.829 <br>CI Low: 101.535 <br>CI High: 120.122","person ID:  2043 <br>Estimate: 72.607 <br>CI Low: 66.61 <br>CI High: 78.604","person ID:  2089 <br>Estimate: 51.092 <br>CI Low: 46.283 <br>CI High: 55.9","person ID:  2079 <br>Estimate: 113.36 <br>CI Low: 104.161 <br>CI High: 122.558","person ID:  2125 <br>Estimate: 78.556 <br>CI Low: 69.754 <br>CI High: 87.359","person ID:  2135 <br>Estimate: 83.15 <br>CI Low: 75.87 <br>CI High: 90.43","person ID:  2145 <br>Estimate: 74.389 <br>CI Low: 68.156 <br>CI High: 80.623","person ID:  2155 <br>Estimate: 99.122 <br>CI Low: 89.736 <br>CI High: 108.508","person ID:  2185 <br>Estimate: 49.021 <br>CI Low: 43.919 <br>CI High: 54.122","person ID:  2215 <br>Estimate: 81.686 <br>CI Low: 74.429 <br>CI High: 88.944","person ID:  2235 <br>Estimate: 92.604 <br>CI Low: 81.337 <br>CI High: 103.871","person ID:  2245 <br>Estimate: 66.577 <br>CI Low: 60.515 <br>CI High: 72.639","person ID:  2255 <br>Estimate: 69.666 <br>CI Low: 62.883 <br>CI High: 76.449","person ID:  2265 <br>Estimate: 68.634 <br>CI Low: 62.268 <br>CI High: 74.999","person ID:  2275 <br>Estimate: 105.943 <br>CI Low: 97.24 <br>CI High: 114.646","person ID:  2613 <br>Estimate: 52.995 <br>CI Low: 47.426 <br>CI High: 58.565","person ID:  2648 <br>Estimate: 106.709 <br>CI Low: 97.94 <br>CI High: 115.479","person ID:  2658 <br>Estimate: 75.17 <br>CI Low: 66.189 <br>CI High: 84.152","person ID:  2699 <br>Estimate: 75.228 <br>CI Low: 68.722 <br>CI High: 81.735","person ID:  2708 <br>Estimate: 110.279 <br>CI Low: 101.325 <br>CI High: 119.233","person ID:  2718 <br>Estimate: 72.817 <br>CI Low: 66.817 <br>CI High: 78.816","person ID:  271 <br>Estimate: 108.98 <br>CI Low: 100.1 <br>CI High: 117.86","person ID:  281 <br>Estimate: 138.776 <br>CI Low: 127.563 <br>CI High: 149.99","person ID:  291 <br>Estimate: 119.946 <br>CI Low: 109.266 <br>CI High: 130.626","person ID:  335 <br>Estimate: 47.565 <br>CI Low: 41.637 <br>CI High: 53.493","person ID:  369 <br>Estimate: 62.157 <br>CI Low: 53.915 <br>CI High: 70.399","person ID:  830 <br>Estimate: 121.487 <br>CI Low: 111.111 <br>CI High: 131.862","person ID:  838 <br>Estimate: 106.945 <br>CI Low: 97.325 <br>CI High: 116.566","person ID:  848 <br>Estimate: 111.601 <br>CI Low: 101.788 <br>CI High: 121.413","person ID:  909 <br>Estimate: 132.491 <br>CI Low: 121.157 <br>CI High: 143.824","person ID:  919 <br>Estimate: 59.437 <br>CI Low: 52.874 <br>CI High: 66"],"showlegend":false,"hoverinfo":["text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text"],"error_x":{"color":"lightgray","array":[8.9016775270288413,8.1244230146884568,7.5949678930966114,7.841428865076324,3.3445997721105671,8.157576743040579,8.1256021291418303,9.2062930210123941,6.5726363482838979,10.194724012644089,8.965514921130584,9.9370187056740669,7.9096868616788711,11.11284808664594,9.5560005557927372,8.3427346624196606,5.9431684869390242,6.6196757399119805,6.2644185933585987,8.8820572679890102,9.8620471587153151,10.889888718803498,7.2352805565222003,6.0463886826154853,6.0265947298317215,7.9467173967009188,5.0439529589530077,13.813759946298147,13.200246105840122,4.8954007936256403,7.6127898925602198,9.6684100058441835,5.9414256138606172,6.8602924020565146,6.6723666190799591,8.1150665761405936,6.8313120530067613,10.677813544388632,5.8235902346676722,10.070632742121413,8.1194257801393697,9.2866554295540595,7.1590893812801211,10.195753753662917,7.486548751393177,9.7121482052819008,5.9928365190640793,9.6301915987549265,7.9557436178022929,9.3304309236208933,7.9834906177500118,7.5852195155312927,13.152165401603069,10.8527211533757,9.2938018199475607,5.9970407854266679,4.8084688371019979,9.1984262651829614,8.8024358755225585,7.2802231054612596,6.2333261180949373,9.3857269587313095,5.1016244551020664,7.257488459338628,11.266647256560431,6.0624240414066328,6.7831990421190422,6.3655319109038357,8.7027715504074372,5.569072447869412,8.7694234269318017,8.9815897373009879,6.5066946309329898,8.9539643071904269,5.9995278217854633,8.880097475226373,11.21368724245167,10.679924625315914,5.9281074081575955,8.2421372082374287,10.375550633887778,9.6205054260254492,9.812207894549033,11.33382066598711,6.5628267995168814],"width":"2"},"textposition":["none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none"],"type":"scatter","marker":{"color":"rgba(204,0,53,1)","line":{"color":"rgba(204,0,53,1)"}},"textfont":{"color":"rgba(204,0,53,1)"},"error_y":{"color":"rgba(204,0,53,1)"},"line":{"color":"rgba(204,0,53,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p>Estimcated model-based WCPM scores can be plotted along with observed WCPM scores.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.wcpm</span>(WCPM_all)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="plot-information-function" class="level2">
+<h2 class="anchored" data-anchor-id="plot-information-function">Plot Information Function</h2>
+<p>Information function can be plotted.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.information</span>(MCEM_run)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/kamataak\.github\.io\/bspam-web\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -44,7 +44,7 @@ The output from the `prep()` function is a list of two components. The `data.lon
 
 One benefit of this two-step approach is that we can use another utility function `get.cases()` to generate a list of unique cases with the output of the `prep()` function. This list can be useful when our interest is to estimate WCPM scores only for selected cases.
 
-```{r}
+```{r prep, message=F, cache=T}
 data <- prep(data = passage2,
              person.id = "id.student",
              occasion = "occasion",
@@ -66,7 +66,7 @@ all.cases
 
 Run the `scoring()` function to estimate WCPM scores. Note that we pass the output object `MCEM_run` from the passage calibration phase, as well as the manipulated data `data.long` from Step 1. By default, WCPM scores will be estimated for all cases in the data. Additionally, there are several estimator options and standard error estimation options. In this example, maximum a priori (MAP) estimators for model parameter estimation and analytic approach to estimate standard errors are used.
 
-```{r}
+```{r score1, message=F, cache=T}
 WCPM_all <- scoring(calib.data=MCEM_run1, 
                     data = data$data.long,
                     est = "map", 
@@ -75,8 +75,9 @@ WCPM_all <- scoring(calib.data=MCEM_run1,
 summary(WCPM_all)
 ```
 
-```{r}
-WCPM_sample_ext2 <- scoring(calib.data=MCEM_run, 
+```{r score2, message=F, cache=T}
+sample.cases <- data.frame(cases = c("2033_fall", "2043_fall", "2089_fall"))
+WCPM_sample_ext2 <- scoring(calib.data=MCEM_run1, 
                             data = data$data.long,
                             cases = sample.cases, 
                             external = c("32004","32010","32015","32016","33003","33037"),

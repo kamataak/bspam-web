@@ -64,3 +64,26 @@ INFO [2026-08-26 13:22:25] There is no zero accurate case.
 INFO [2026-08-26 13:22:25] Begin scoring process
 INFO [2026-08-26 13:22:25] Output map estimating score
 INFO [2026-08-26 13:22:27] End scoring process
+INFO [2026-08-26 13:25:55] Begin mcem process
+INFO [2026-08-26 13:26:17] End mcem process
+INFO [2026-08-26 13:26:17] Begin preparing data process
+INFO [2026-08-26 13:26:17] End preparing data process
+INFO [2026-08-26 13:26:17] There is no perfect accurate case.
+INFO [2026-08-26 13:26:17] There is no zero accurate case.
+INFO [2026-08-26 13:26:17] Begin scoring process
+INFO [2026-08-26 13:26:17] Output map estimating score
+INFO [2026-08-26 13:26:19] End scoring process
+INFO [2026-08-26 13:28:30] Begin mcem process
+INFO [2026-08-26 13:28:54] End mcem process
+INFO [2026-08-26 13:28:54] Begin preparing data process
+INFO [2026-08-26 13:28:54] End preparing data process
+INFO [2026-08-26 13:28:54] There is no perfect accurate case.
+INFO [2026-08-26 13:28:54] There is no zero accurate case.
+INFO [2026-08-26 13:28:54] Begin scoring process
+INFO [2026-08-26 13:28:54] Output map estimating score
+INFO [2026-08-26 13:28:56] End scoring process
+INFO [2026-08-26 13:29:46] There is no perfect accurate case.
+INFO [2026-08-26 13:29:46] There is no zero accurate case.
+INFO [2026-08-26 13:29:46] Begin scoring process
+INFO [2026-08-26 13:29:46] Output map estimating score
+INFO [2026-08-26 13:29:48] End scoring process

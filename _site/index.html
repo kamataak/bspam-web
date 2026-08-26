@@ -156,8 +156,16 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#acknowledgement" id="toc-acknowledgement" class="nav-link" data-scroll-target="#acknowledgement">Acknowledgement</a></li>
+  <li><a href="#copyright-statement" id="toc-copyright-statement" class="nav-link" data-scroll-target="#copyright-statement">Copyright Statement</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -181,13 +189,22 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p><code>bspam</code> is an R package that contains functions to fit the speed-accuracy psychometric model for repeatedly measured count outcome data (Potgieter, Kamata &amp; Kara, 2017; Kara, Kamata, Potgieter &amp; Nese, 2020; Potgider, Kamata, Kara, &amp; Qiao, 2025), which is an extension of van der Linden (2007). In the <code>bspam</code> model, the accuracy and speed are modeled by a binomial count and a log-normal latent variable models, respectively. It also estimates speed and accuracy latent factor scores as described in Potgieter, Qiao, Kamata, and Kara (2024). For example, the use of this modeling technique allows model-based calibration and scoring for oral reading fluency (ORF) assessment data, estimating model-based WCPM scores.</p>
-<p><code>bspam</code> R package is maintained at:<br>
-<a href="https://github.com/kamataak/bspam" class="uri">https://github.com/kamataak/bspam</a></p>
-<p><code>bspam</code> is also available as a Shiny App with limited features at:<br>
-<a href="https://shinyviz.smu.edu/shiny/public/bspam-main/" class="uri">https://shinyviz.smu.edu/shiny/public/bspam-main/</a></p>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p><code>bspam</code> is named after <strong>S</strong>peed-<strong>A</strong>ccuracy <strong>P</strong>sychomeric <strong>M</strong>odeling for <strong>B</strong>inomial count outcome data. It is an R package that contains functions to fit the speed-accuracy latent variable psychometric model for repeatedly measured count outcome data (Potgieter, Kamata &amp; Kara, 2017; Kara, Kamata, Potgieter &amp; Nese, 2020; Potgider, Kamata, Kara, &amp; Qiao, 2025), which is an extension of van der Linden (2007). In the <code>bspam</code> model, the accuracy and speed are modeled by a binomial count and a log-normal latent variable models, respectively. It also estimates speed and accuracy latent factor scores as described in Potgieter, Qiao, Kamata, and Kara (2024) and Kara, Kamata, Potgieter, and Nese (2020). For example, the use of this modeling technique allows model-based calibration and scoring for oral reading fluency (ORF) assessment data, estimating model-based WCPM scores.</p>
+</section>
+<section id="acknowledgement" class="level2">
+<h2 class="anchored" data-anchor-id="acknowledgement">Acknowledgement</h2>
+<p>The development of <code>bspam</code> R package and Shiny App was supported by the Institute of Education Sciences, U.S. Department of Education, through Grant R305D200038 to Southern Methodist University.</p>
+</section>
+<section id="copyright-statement" class="level2">
+<h2 class="anchored" data-anchor-id="copyright-statement">Copyright Statement</h2>
+<p>Copyright (C) 2022-2026 The ORF Project Team</p>
+<p>The bspam package is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or any later version.</p>
+<p>The bspam package is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with this package. If not, see <a href="http://www.gnu.org/licenses/" class="uri">http://www.gnu.org/licenses/</a>.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
