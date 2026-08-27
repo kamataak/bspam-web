@@ -23,7 +23,7 @@ We will use the `fit.model()` function with the default estimation method, which
 The `fit.model()` function requires several arguments. The description of the arguments are summarized in the table below.
 
 | Arguments | Required | Description |
-|------------------------|------------------------|------------------------|
+|----|----|----|
 | `data` | Yes | The name of the data-frame object |
 | `person.id` | Yes | Quoted variable name in `data` for the unique person identifier. In the ORF context, typically student ID. |
 | `task.id` | Yes | Quoted variable name in `data` for the task identifier. In ORF context, passage ID. |
