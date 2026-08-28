@@ -46,7 +46,7 @@ WCPM_all <- scoring(calib.data=MCEM_run1,
 
 ## Plot Calibration Results
 
-```{r}
+```{r plot1, message=F, cache=T}
 plot.task(MCEM_run1, parameter = "a", sort = TRUE)
 ```
 
@@ -54,13 +54,13 @@ plot.task(MCEM_run1, parameter = "a", sort = TRUE)
 
 Estimated latent factor scores or model-based WCPM scores can be plotted along with their standard errors.
 
-```{r}
+```{r plot2, message=F, cache=T}
 plot.person(WCPM_all, parameter = "wcpm", show.se = TRUE)
 ```
 
 Estimcated model-based WCPM scores can be plotted along with observed WCPM scores.
 
-```{r eval=FALSE}
+```{r plot3, message=F, cache=T, eval=FALSE}
 plot.wcpm(WCPM_all)
 ```
 
@@ -68,6 +68,6 @@ plot.wcpm(WCPM_all)
 
 Information function can be plotted.
 
-```{r eval=FALSE}
+```{r plot4, message=F, cache=T, eval=FALSE}
 plot.information(MCEM_run)
 ```

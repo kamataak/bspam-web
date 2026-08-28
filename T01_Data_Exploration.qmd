@@ -10,7 +10,7 @@ This document presents the data exploration of the example data set `passage2` a
 
 First, we load required packages, including the `bspam` and `tidyverse` packages. We also load the example data set `passage2`.
 
-```{r eval=T, echo=T, message=F, warning=F}
+```{r echo=T, message=F, warning=F}
 library(tidyverse)
 library(bspam)
 data("passage2")
@@ -38,7 +38,7 @@ The seven variables in the data set includes:\
 
 Some descriptive statistics are provided below. First, data were aggregated for each of the 12 passages as follows.
 
-```{r eval=T}
+```{r table1, message=F, cache=T}
 passage2 %>% 
   group_by(id.passage) %>% 
   mutate(rate.wrc = wrc/numwords.pass,
@@ -58,7 +58,7 @@ Here, it is noted that some passages are more difficult than other passages in a
 
 Next, data were aggregated for each of the 85 students as follows.
 
-```{r eval=T}
+```{r table2, message=F, cache=T}
 passage2 %>% 
   group_by(id.student) %>% 
   summarise(n.passages = n(),
