@@ -403,8 +403,10 @@ For sentence-level data, set <code>sentence_level = TRUE</code> and provide a <c
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">data =</span> data<span class="sc">$</span>data.long,</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">est =</span> <span class="st">"map"</span>, </span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">se =</span> <span class="st">"analytic"</span>,</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">type =</span> <span class="st">"orf"</span>)</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(WCPM_all)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">type =</span> <span class="st">"orf"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(WCPM_all)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> person.id tau.map theta.map se.tau.map se.theta.map obs.counts.map secs.map
        954   0.139     1.018      0.041        0.187        743.629  407.018
@@ -581,15 +583,17 @@ For sentence-level data, set <code>sentence_level = TRUE</code> and provide a <c
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>sample.cases <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">cases =</span> <span class="fu">c</span>(<span class="st">"2033_fall"</span>, <span class="st">"2043_fall"</span>, <span class="st">"2089_fall"</span>))</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>WCPM_sample_ext2 <span class="ot">&lt;-</span> <span class="fu">scoring</span>(<span class="at">calib.data=</span>MCEM_run1, </span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>                            <span class="at">data =</span> data<span class="sc">$</span>data.long,</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>                            <span class="at">cases =</span> sample.cases, </span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>                            <span class="at">external =</span> <span class="fu">c</span>(<span class="st">"32004"</span>,<span class="st">"32010"</span>,<span class="st">"32015"</span>,<span class="st">"32016"</span>,<span class="st">"33003"</span>,<span class="st">"33037"</span>),</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>                            <span class="at">est =</span> <span class="st">"map"</span>, </span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>                            <span class="at">se =</span> <span class="st">"analytic"</span>,</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>                            <span class="at">type =</span> <span class="st">"orf"</span>)</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(WCPM_sample_ext2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>sample.cases <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">cases =</span> <span class="fu">c</span>(<span class="st">"2033_fall"</span>, <span class="st">"2043_fall"</span>, <span class="st">"2089_fall"</span>))</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>WCPM_sample_ext2 <span class="ot">&lt;-</span> <span class="fu">scoring</span>(<span class="at">calib.data=</span>MCEM_run1, </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>                            <span class="at">data =</span> data<span class="sc">$</span>data.long,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>                            <span class="at">cases =</span> sample.cases, </span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>                            <span class="at">external =</span> <span class="fu">c</span>(<span class="st">"32004"</span>,<span class="st">"32010"</span>,<span class="st">"32015"</span>,<span class="st">"32016"</span>,<span class="st">"33003"</span>,<span class="st">"33037"</span>),</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>                            <span class="at">est =</span> <span class="st">"map"</span>, </span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>                            <span class="at">se =</span> <span class="st">"analytic"</span>,</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>                            <span class="at">type =</span> <span class="st">"orf"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(WCPM_sample_ext2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> person.id tau.map theta.map se.tau.map se.theta.map obs.counts.map secs.map
       2033   0.182     0.399      0.042        0.152        342.545  190.472
