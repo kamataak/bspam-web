@@ -60,7 +60,7 @@ website:
   - id: resourses
     style: docked
     contents:
-      - text: "Resources Home"
+      - text: "Resources"
         href: resources.qmd
        
 format:
