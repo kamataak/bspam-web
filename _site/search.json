@@ -2,7 +2,7 @@
   {
     "objectID": "resources.html",
     "href": "resources.html",
-    "title": "Resources",
+    "title": "Resources Home",
     "section": "",
     "text": "bspam R package is maintained at:\nhttps://github.com/kamataak/bspam\n\n\n\nbspam is also available as a Shiny App with limited features at:\nhttps://shinyviz.smu.edu/shiny/public/bspam-main/",
     "crumbs": [
@@ -13,7 +13,7 @@
   {
     "objectID": "resources.html#links",
     "href": "resources.html#links",
-    "title": "Resources",
+    "title": "Resources Home",
     "section": "",
     "text": "bspam R package is maintained at:\nhttps://github.com/kamataak/bspam\n\n\n\nbspam is also available as a Shiny App with limited features at:\nhttps://shinyviz.smu.edu/shiny/public/bspam-main/",
     "crumbs": [
@@ -24,7 +24,7 @@
   {
     "objectID": "resources.html#related-publications",
     "href": "resources.html#related-publications",
-    "title": "Resources",
+    "title": "Resources Home",
     "section": "Related Publications",
     "text": "Related Publications\n\nMCEM Algorithm for Calibration\n\nPotgieter, C. J., Kamata, A., Kara, Y., & Qiao, X. (2025). Joint analysis of dispersed count-time data using a bivariate latent factor model. British Journal of Mathematical and Statistical Psychology, 79, 207-228. https://doi.org/10.1111/bmsp.70005\n\n\n\nCalibration and Scoring by Bayesian Approach\n\nKara, Y., Kamata, A., Potgieter, C., & Nese, J. F. A. (2020). Estimating model-based oral reading fluency: Bayesian approach. Educational and Psychological Measurement, 80, 847-869. doi:10.1177/0013164419900208\n\n\n\nScoring by MLE, MAP, and EAP\n\nPotgieter, C., Qiao, X., Kamata, A., & Kara, Y. (2024). Likelihood-based estimation of model-derived oral reading fluency. Journal of Educational Measurement. http://dx.doi.org/10.1111/jedm.12404\nQiao, X., Evudottir, E., Potgieter, C. J., & Kamata, A. (2026). Likelihood-based estimation of model-derived oral reading fluency under overdispersed count-time data. Measurement: Interdisciplinary Research and Perspectives. https://doi.org/10.1080/15366367.2026.2643183\n\n\n\nEquating\n\nKara, Y., Kamata., Qiao, X., Potgieter, N., & Nese, J. F. T. (2023). Equating oral reading fluency scores: A model-based approach. Educational and Psychological Measurement. http://dx.doi.org/10.1177/00131644221148122\n\n\n\nOther Relevant Publications\n\nKara, Y., Nese, J., Foster, P., & Kamata, A. (2026). Practical implications of the model-based approach to oral reading fluency assessment. Measurement: Interdisciplinary Research and Perspectives.\nNese, J. F. A., & Kamata, A. (2020). Addressing the large standard error of traditional CBM-R: Estimating the conditional standard error of a model-based estimate of CBM-R. Assessment for Effective Intervention. Published Online First. https://doi.org/10.1177/1534508420937801\nQiao, X, Kamata, A., Kara, Y., Potgieter, C., & Nese, J. (2025). Beta-binomial model for count data: An application in estimating model-based oral reading fluency. Educational and Psychological Measurement. http://dx.doi.org/10.1177/00131644251335914\nQiao, X., Kamata, A., & Potgieter, C. (2024). Incorporating Calibration Errors in Oral Reading Fluency Scoring. British Journal of Mathematical and Statistical Psychology. https://doi.org/10.1111/bmsp.12348\nKara, Y., Kamata, A., Emre, E., Qiao, X., & Nese, J. F. T. (2023). Predicting oral reading fluency by between-word silence times using natural language processing and random forest algorithm. Psychological Test and Assessment Modeling. 65(1), 36-54. https://www.psychologie-aktuell.com/fileadmin/Redaktion/Journale/ptam_2023-1/PTAM__1-2023_2_kor.pdf\nNese, J. F. T., & Kamata, A. (2021). Evidence for automated scoring and shorter passages of CBM-R in early elementary school. School Psychology. 36 (1), 47-59. doi: 10.1037/spq0000415",
     "crumbs": [
@@ -35,7 +35,7 @@
   {
     "objectID": "resources.html#citation-for-bspam-r-package",
     "href": "resources.html#citation-for-bspam-r-package",
-    "title": "Resources",
+    "title": "Resources Home",
     "section": "Citation for bspam R Package",
     "text": "Citation for bspam R Package\n\nAPA:\nWang K, Kamata A, Potgieter C, Nese J, Kara Y, Somsong S, Qiao X (2023). bspam: Speed-Accuracy Psychometric Modeling for Binomial Count Outcome Data with R. R package version 1.2.5, https://github.com/kamataak/bspam\n\n\nBibTeX:\n@Manual{, title = {bspam: Speed-Accuracy Psychometric Modeling for Binomial Count Outcome Data with R}, author = {Kuo Wang and Akihito Kamata and Cornelis J. Potgieter and Joseph F. T. Nese and Yusuf Kara and Sarunya Somsong and Xin Qiao}, year = {2023}, note = {R package version 1.2.5}, url = {https://github.com/kamataak/bspam}",
     "crumbs": [
