@@ -40,13 +40,13 @@ Testlet_run <-
 
 The estimated testlet parameter is reported as part of the hyper-parameters.
 
-```{r}
+```{r output1, message=F, cache=T}
 Testlet_run$hyper.param
 ```
 
 Task- and sentence-level parameters can be extracted by:
 
-```{r}
+```{r output3, message=F, cache=T}
 Testlet_run$task.param
 ```
 

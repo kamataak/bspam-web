@@ -57,7 +57,7 @@ data <- prep(data = passage2,
 
 Generate a list of unique cases
 
-```{r}
+```{r output1, message=F, cache=T}
 all.cases <- get.cases(data$data.long)
 all.cases
 ```
@@ -72,6 +72,9 @@ WCPM_all <- scoring(calib.data=MCEM_run1,
                     est = "map", 
                     se = "analytic",
                     type = "orf")
+```
+
+```{r output2, message=F, cache=T}
 summary(WCPM_all)
 ```
 
@@ -84,5 +87,8 @@ WCPM_sample_ext2 <- scoring(calib.data=MCEM_run1,
                             est = "map", 
                             se = "analytic",
                             type = "orf")
+```
+
+```{r output3, message=F, cache=T}
 summary(WCPM_sample_ext2)
 ```

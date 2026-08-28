@@ -48,7 +48,7 @@ WCPM_sample <- scoring(calib.data = MCEM_run1,
                        type = "orf")
 ```
 
-```{r}
+```{r table1, message=F, cache=T}
 knitr::kable(summary(WCPM_sample), digits = 2) %>%
   kableExtra::scroll_box(width = "100%", height = "400px")
 ```
